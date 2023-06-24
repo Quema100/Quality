@@ -20,7 +20,7 @@ const createWindow = () => {
     server.start()
     win.setMenuBarVisibility(false)
     win.loadURL('http://localhost:3000');
-    win.loadFile('./src/web/main.html')
+    //win.loadFile('./src/web/main.html')
 
   }
 
