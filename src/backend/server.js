@@ -3,6 +3,10 @@ const app = express();
 const path = require('path');
 const port = 3000;
 
+
+app.use(express.json()); // JSON 데이터 파싱을 위한 Body Parser 미들웨어 등록
+app.use(express.urlencoded({ extended: true })); // URL 인코딩된 데이터 파싱을 위한 Body Parser 미들웨어 등록
+
 // CORS 설정 (모든 도메인에서 접근 가능하도록 설정)
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -26,11 +30,8 @@ app.get('/', (req, res) => {
 
 app.post('/login', (req, res) => {
   // 데이터 처리 로직
-  const data = {
-    message: 'login',
-    timestamp: new Date().toISOString(),
-  };
-  res.json(data);
+  console.log(req.body)
+  res.send(req.body);
 });
 // 서버 시작
 const start = () => {
