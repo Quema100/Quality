@@ -1,10 +1,12 @@
 const { app, BrowserWindow} = require('electron');
 const path = require('path')
+// Express.js 서버 모듈을 가져온다.
+const server = require('./src/backend/server.js');
 
 const createWindow = () => {
     const win = new BrowserWindow({
       frame: false, // 타이틀바 숨기기
-      width: 800,
+      width: 1000,
       height: 600,
       icon: path.join(__dirname, './icon/biggericon.png'),
       webPreferences: {
@@ -14,6 +16,8 @@ const createWindow = () => {
         preload: path.join(__dirname, './preload.js')
       },
     })
+
+    server.start()
     win.setMenuBarVisibility(false)
     win.loadFile('./src/main.html')
 
