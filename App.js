@@ -71,7 +71,6 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
-  checkForUpdates();
   createWindow()
 })
 
