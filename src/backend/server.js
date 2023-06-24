@@ -24,6 +24,14 @@ app.get('/', (req, res) => {
   //res.json(data);
 });
 
+app.post('/login', (req, res) => {
+  // 데이터 처리 로직
+  const data = {
+    message: 'login',
+    timestamp: new Date().toISOString(),
+  };
+  res.json(data);
+});
 // 서버 시작
 const start = () => {
   app.listen(port, () => {
