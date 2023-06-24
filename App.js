@@ -10,10 +10,12 @@ const createWindow = () => {
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
+        devTools:true,
+        preload: path.join(__dirname, './preload.js')
       },
     })
     win.setMenuBarVisibility(false)
-    win.loadFile('main.html')
+    win.loadFile('./src/main.html')
 
   }
 
