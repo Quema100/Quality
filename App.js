@@ -24,8 +24,17 @@ function initTrayIconMenu(win) {
       click: () => {
         win.destroy(); // 창 닫기
       }
+    },
+    {
+      label: 'Restart Quality',
+      type: 'normal',
+      click: () => {
+          app.relaunch();
+          app.exit();
+      }
     }
   ]);
+
   tray.setToolTip('Quality');
   tray.setContextMenu(myMenu);
 
