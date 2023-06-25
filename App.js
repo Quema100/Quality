@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Menu, Tray} = require('electron');
 const path = require('path')
-// Express.js 서버 모듈을 가져온다.
+// 서버 모듈을 가져온다.
 const server = require('./src/backend/server.js');
 
 function initTrayIconMenu(win) {
@@ -55,8 +55,8 @@ const createWindow = () => {
     height: 600,
     icon: path.join(__dirname, './icon/biggericon.png'),
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
+      nodeIntegration: false,
+      contextIsolation: true,
       devTools:true,
       preload: path.join(__dirname, './preload.js')
     },

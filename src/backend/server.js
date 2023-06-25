@@ -43,7 +43,7 @@ app.post('/sign', (req, res) => {
 });
 // 서버 시작
 const start = () => {
-  app.listen(port, () => {
+  app.listen(port,'localhost', () => {
     console.log(`Server is running on port ${port}`);
   });
 };
