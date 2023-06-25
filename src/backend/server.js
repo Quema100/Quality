@@ -32,6 +32,10 @@ app.get('/signup', (req, res) => {
   res.sendFile(path.join(__dirname, '../web/signup', 'signup.html'));
 });
 
+app.get('/signin', (req, res) => {
+  res.sendFile(path.join(__dirname, '../web/signup', 'signup.html'));
+});
+
 app.post('/sign', (req, res) => {
   // 데이터 처리 로직
   console.log(req.body)

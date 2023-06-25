@@ -52,6 +52,7 @@ const createWindow = () => {
       preload: path.join(__dirname, './preload.js')
     },
   })
+  
   win.on('close', (event) => {
     event.preventDefault(); // 기본 close 동작 막기
     win.hide(); // 창 숨기기
