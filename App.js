@@ -7,19 +7,19 @@ function initTrayIconMenu(win) {
   const tray = new Tray('./icon/biggericon.png');
   const myMenu = Menu.buildFromTemplate([
     {
-      label: 'Start',
+      label: 'Open Quality',
       type: 'normal',
       checked: true,
       click: () => {
-        if (win === null) {
-          createWindow();
-        }else{
+        if (win.isMinimized()) {
           win.focus();
+        } else {
+          win.show();
         }
       }
     },
     {
-      label: 'Quit',
+      label: 'Quit Quality',
       type: 'normal',
       click: () => {
         win.destroy(); // 창 닫기
@@ -31,15 +31,10 @@ function initTrayIconMenu(win) {
 
   // 트레이 아이콘 클릭 이벤트 처리
   tray.on('click', () => {
-    if (win === null) {
-      createWindow();
+    if (win.isMinimized()) {
+      win.focus();
     } else {
-      if (win.isMinimized()) {
-        win.restore();
-        win.isMaximized()
-      } else {
-        win.minimize();
-      }
+      win.show();
     }
   });
 }
@@ -77,8 +72,8 @@ app.whenReady().then(() => {
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()
-}
-  })
+  }
+})
     
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
