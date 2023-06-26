@@ -1,9 +1,18 @@
-const { app, BrowserWindow, Menu, Tray} = require('electron');
+const { app, BrowserWindow, Menu, Tray, ipcMain} = require('electron');
 const path = require('path')
 // 서버 모듈을 가져온다.
 const server = require('./src/backend/server.js');
 
-function initTrayIconMenu(win) {
+let win;
+
+// 단일 인스턴스로 실행 중인지 확인
+const isSingleInstance = app.requestSingleInstanceLock();
+if (!isSingleInstance) {
+  app.quit();
+  return;
+}
+
+function initTrayIconMenu() {
   const tray = new Tray('./icon/biggericon.png');
   const myMenu = Menu.buildFromTemplate([
     {
@@ -49,7 +58,7 @@ function initTrayIconMenu(win) {
 }
 
 const createWindow = () => {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     frame: false, // 타이틀바 숨기기
     width: 1000,
     height: 600,
@@ -70,19 +79,17 @@ const createWindow = () => {
   server.start()
   win.setMenuBarVisibility(false)
   win.loadURL('http://localhost:3000');
-  initTrayIconMenu(win)
+  initTrayIconMenu()
   //win.loadFile('./src/web/main.html')
 
 }
 
 app.whenReady().then(() => {
   createWindow()
-})
 
-app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow()
-  }
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  })
 })
     
 app.on('window-all-closed', () => {
@@ -90,3 +97,8 @@ app.on('window-all-closed', () => {
     app.quit()
   } 
 })
+
+ipcMain.on("toMain", (event, data) => {
+  console.log(`Received [${data}] from renderer browser`);
+  win.webContents.send("fromMain", ' here is main! ');
+});

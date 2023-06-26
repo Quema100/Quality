@@ -3,13 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
         <link sizes="16x16" href="./icon/icon.png" rel="icon" type="image/x-icon">
         <link href="./css/main.css" rel="stylesheet">
         <script src="./js/renderer.js"></script>  
         <script src ="./js/main.js"></script>
         <title>Quality</title>
     </head>
-    <body>      
+    <body>   
+        <h1>Hello World!</h1>
+        We are using Node.js <span id="node-version"></span>,
+        Chromium <span id="chrome-version"></span>,
+        and Electron <span id="electron-version"></span>.   
         <div class="login-wrapper">
             <h2>Sign In</h2>
             <form method="post" action="/signin" id="login-form">

@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs')
 const app = express();
 const path = require('path');
 const port = 3000;
@@ -33,14 +34,71 @@ app.get('/signup', (req, res) => {
 });
 
 app.get('/signin', (req, res) => {
-  res.sendFile(path.join(__dirname, '../web/signup', 'signup.html'));
+  // 데이터 처리 로직
+  const data = {
+   message: 'Hello, server!',
+   timestamp: new Date().toISOString(),
+  };
+  res.json(data);
 });
 
+const qualityDir = '/Quality'; // Quality 폴더 경로
+const filePath = path.join(qualityDir, 'users.json'); // users.json 파일 경로
+
+// Quality 폴더가 존재하지 않을 경우 생성
+if (!fs.existsSync(qualityDir)) {
+  fs.mkdirSync(qualityDir);
+}
+
+let users = {};
+
+// users.json 파일이 존재하는 경우 이전 데이터를 읽어옴
+if (fs.existsSync(filePath)) {
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  if (fileContent) {
+    users = JSON.parse(fileContent);
+  }
+}
+
 app.post('/sign', (req, res) => {
+  const userID = req.body.id;
+  const userPassword = req.body.userPassword;
+
+  if (users.hasOwnProperty(userID)) {
+    console.log('User already exists. Cannot create a duplicate user.');
+    //res.sendFile(path.join(__dirname, '../web', 'main.html'));
+    return res.sendFile(path.join(__dirname, '../web', 'main.html'));//res.status(400).send('User already exists. Cannot create a duplicate user.');
+  }
+
+  const newUser = {
+    usrid: userID,
+    password: userPassword
+  };
+
+  // 데이터를 추가하는 대신에 기존 데이터를 유지하도록 할 때는 아래의 코드를 사용합니다.
+  if (Object.keys(users).length > 0) {
+    console.log('Cannot add new user. Existing data already exists.');
+    res.sendFile(path.join(__dirname, '../web', 'main.html'));
+    return res.sendFile(path.join(__dirname, '../web', 'main.html'));//res.status(400).send('Cannot add new user. Existing data already exists.');
+  }
+
+  users = newUser;
+
+  fs.writeFile(filePath, JSON.stringify(users), 'utf-8', (err) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send('Error occurred while saving user data.');
+    }
+    console.log('New user added to the file.');
+    res.sendFile(path.join(__dirname, '../web', 'main.html'));
+    //res.send('New user added successfully.');
+  });
   // 데이터 처리 로직
-  console.log(req.body)
-  res.send(req.body);
+  //console.log(req.body)
+  //res.send(req.body);
 });
+
+
 // 서버 시작
 const start = () => {
   app.listen(port,'localhost', () => {
