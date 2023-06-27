@@ -18,6 +18,24 @@ contextBridge.exposeInMainWorld(
 );
 
 window.addEventListener('DOMContentLoaded', () => {
+  let close = document.getElementById('close');
+  let mini = document.getElementById('mini');
+  let max = document.getElementById('max');
+
+  close.addEventListener('click', () => {
+    ipcRenderer.send('close-window');
+  });
+
+  mini.addEventListener('click', () => {
+    ipcRenderer.send('minimize-window');
+  });
+
+  max.addEventListener('click', () => {
+    ipcRenderer.send('maximize-window');
+  });
+});
+
+window.addEventListener('DOMContentLoaded', () => {
     const replaceText = (selector, text) => {
       const element = document.getElementById(selector)
       if (element) element.innerText = text

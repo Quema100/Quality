@@ -20,7 +20,7 @@ function initTrayIconMenu() {
       type: 'normal',
       checked: true,
       click: () => {
-        if (win.isMinimized()) {
+        if (win.isMaximized()) {
           win.focus();
         } else {
           win.show();
@@ -49,11 +49,10 @@ function initTrayIconMenu() {
 
   // 트레이 아이콘 클릭 이벤트 처리
   tray.on('click', () => {
-    if (win.isMinimized()) {
-      win.show();
-    } else {
+    if (win.isMaximized()) {
       win.focus();
-      win.restore();
+    } else {
+      win.show();
     }
   });
 }
@@ -102,4 +101,21 @@ app.on('window-all-closed', () => {
 ipcMain.on("toMain", (event, data) => {
   console.log(`Received [${data}] from renderer browser`);
   win.webContents.send("fromMain", ' here is main! ');
+});
+
+  // 이벤트 수신
+ipcMain.on('close-window', () => {
+  win.close();
+});
+
+ipcMain.on('minimize-window', () => {
+  win.minimize();
+});
+
+ipcMain.on('maximize-window', () => {
+  if (win.isMaximized()) {
+    win.restore();
+  } else {
+    win.maximize();
+  }
 });
