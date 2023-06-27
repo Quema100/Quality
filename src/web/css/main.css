@@ -1,0 +1,105 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #444444;
+    overflow: hidden;
+}
+
+.wrapper{
+    width: 300px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #191919;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.wrapper > h2{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+#signin input[type = "text"],#signin input[type = "password"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #606060;
+    border-radius: 10px;
+    padding: 10px 10px;
+    width: 180px;
+    outline: none;
+    color: white;
+    transition: 0.3s;
+}
+
+#signin input[type = "text"]:focus,#signin input[type = "password"]:focus{
+    width: 240px;
+    height: 20px;
+    border-color: white;
+}
+
+#signin input ::placeholder{
+    font-size: 10px;
+}
+
+#signin input[type = "submit"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #606060;
+    border-radius: 10px;
+    padding: 10px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    transition: 0.3s;
+}
+
+#signin input[type = "submit"]:hover{
+    background: #606060;
+    border-color: white;
+}
+
+.wrapper a{
+    font-size: small;
+    text-decoration: none;
+    color: #606060;
+    transition: .3s;
+}
+
+.wrapper a:hover{
+    color: white;
+}
+
+.wrapper p{
+    font-size: smaller;
+    color: white;
+    transition: .3s;
+    animation: slow 5s;
+}
+/*-----animation----*/
+@keyframes slow {
+    0% {
+        opacity: 0;
+    }
+    25%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

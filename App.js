@@ -50,9 +50,10 @@ function initTrayIconMenu() {
   // 트레이 아이콘 클릭 이벤트 처리
   tray.on('click', () => {
     if (win.isMinimized()) {
-      win.focus();
-    } else {
       win.show();
+    } else {
+      win.focus();
+      win.restore();
     }
   });
 }

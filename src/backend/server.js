@@ -2,9 +2,13 @@ const express = require('express');
 const fs = require('fs')
 const app = express();
 const path = require('path');
+const crypto = require("crypto");
+const signup = require('./signupserver.js')
+const signin = require('./signinserver.js')
 const port = 3000;
 
-
+app.set('view engine', 'ejs'); // EJS를 뷰 엔진으로 설정
+app.set('views', path.join(__dirname, '../web'));
 app.use(express.json()); // JSON 데이터 파싱을 위한 Body Parser 미들웨어 등록
 app.use(express.urlencoded({ extended: true })); // URL 인코딩된 데이터 파싱을 위한 Body Parser 미들웨어 등록
 
@@ -20,7 +24,7 @@ app.use(express.static(path.join(__dirname, '../web')));
 
 // 라우트 정의
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../web', 'main.html'));
+  res.render(path.join(__dirname, '../web', 'main.ejs'),{ errorMessage:null});
   // 데이터 처리 로직
   //const data = {
   //  message: 'Hello, server!',
@@ -33,70 +37,11 @@ app.get('/signup', (req, res) => {
   res.sendFile(path.join(__dirname, '../web/signup', 'signup.html'));
 });
 
-app.get('/signin', (req, res) => {
-  // 데이터 처리 로직
-  const data = {
-   message: 'Hello, server!',
-   timestamp: new Date().toISOString(),
-  };
-  res.json(data);
-});
+signin(app,fs,crypto,path)
 
-const qualityDir = '/Quality'; // Quality 폴더 경로
-const filePath = path.join(qualityDir, 'users.json'); // users.json 파일 경로
 
-// Quality 폴더가 존재하지 않을 경우 생성
-if (!fs.existsSync(qualityDir)) {
-  fs.mkdirSync(qualityDir);
-}
+signup(app,fs,crypto,path)
 
-let users = {};
-
-// users.json 파일이 존재하는 경우 이전 데이터를 읽어옴
-if (fs.existsSync(filePath)) {
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
-  if (fileContent) {
-    users = JSON.parse(fileContent);
-  }
-}
-
-app.post('/sign', (req, res) => {
-  const userID = req.body.id;
-  const userPassword = req.body.userPassword;
-
-  if (users.hasOwnProperty(userID)) {
-    console.log('User already exists. Cannot create a duplicate user.');
-    //res.sendFile(path.join(__dirname, '../web', 'main.html'));
-    return res.sendFile(path.join(__dirname, '../web', 'main.html'));//res.status(400).send('User already exists. Cannot create a duplicate user.');
-  }
-
-  const newUser = {
-    usrid: userID,
-    password: userPassword
-  };
-
-  // 데이터를 추가하는 대신에 기존 데이터를 유지하도록 할 때는 아래의 코드를 사용합니다.
-  if (Object.keys(users).length > 0) {
-    console.log('Cannot add new user. Existing data already exists.');
-    res.sendFile(path.join(__dirname, '../web', 'main.html'));
-    return res.sendFile(path.join(__dirname, '../web', 'main.html'));//res.status(400).send('Cannot add new user. Existing data already exists.');
-  }
-
-  users = newUser;
-
-  fs.writeFile(filePath, JSON.stringify(users), 'utf-8', (err) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send('Error occurred while saving user data.');
-    }
-    console.log('New user added to the file.');
-    res.sendFile(path.join(__dirname, '../web', 'main.html'));
-    //res.send('New user added successfully.');
-  });
-  // 데이터 처리 로직
-  //console.log(req.body)
-  //res.send(req.body);
-});
 
 
 // 서버 시작
