@@ -127,3 +127,7 @@ ipcMain.on('goBack', () => {
   // 뒤로 가기
   win.webContents.goBack();
 });
+
+ipcMain.on("goBackToSignin", (event, url) => {
+  win.loadURL(url);
+});

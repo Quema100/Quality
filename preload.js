@@ -35,17 +35,13 @@ window.addEventListener('DOMContentLoaded', () => {
     ipcRenderer.send('maximize-window');
   });
   back.addEventListener("click", () => {
-    ipcRenderer.send('goBack');
+    const referer = document.referrer;
+
+    if (referer.includes("?errorMessage=")) {
+      const cleanURL = referer.split("?errorMessage=")[0];
+      ipcRenderer.send("goBackToSignin", cleanURL);
+    } else {
+      ipcRenderer.send('goBack');
+    }
   });
 });
-
-window.addEventListener('DOMContentLoaded', () => {
-    const replaceText = (selector, text) => {
-      const element = document.getElementById(selector)
-      if (element) element.innerText = text
-    }
-  
-    for (const dependency of ['chrome', 'node', 'electron']) {
-      replaceText(`${dependency}-version`, process.versions[dependency])
-    }
-  })
