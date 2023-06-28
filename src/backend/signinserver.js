@@ -32,22 +32,22 @@ function signin(app,fs,crypto,path) {
 
     if (users.userid !== userID && encryptedPassword === users.password) {
       const errorMessage = 'Not Found ID'; // 오류 메시지 예시
-      res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage)); // index.ejs 파일 렌더링    
+      return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage)); // index.ejs 파일 렌더링    
     }
 
     if (users.userid !== userID && encryptedPassword !== users.password) {
       const errorMessage = 'Not Found ID and Password'; // 오류 메시지 예시
-      res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage)); // index.ejs 파일 렌더링    
+      return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage)); // index.ejs 파일 렌더링 
     }
 
     if (users.userid === userID && encryptedPassword !== users.password) {
       const errorMessage = 'Not Found Password'; // 오류 메시지 예시
-      res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage)); // index.ejs 파일 렌더링      
+      return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage)); // index.ejs 파일 렌더링      
     }
 
     if (users.userid === userID && encryptedPassword === users.password){
       console.log('User logged in successfully.');
-      res.render(path.join(__dirname, '../web/lobby', 'lobby.ejs')); // index.ejs 파일 렌더링     
+      return res.render(path.join(__dirname, '../web/lobby', 'lobby.ejs')); // index.ejs 파일 렌더링     
     }
     
   });

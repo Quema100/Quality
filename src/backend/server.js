@@ -25,13 +25,7 @@ app.use(express.static(path.join(__dirname, '../web')));
 
 // 라우트 정의
 app.get('/', (req, res) => {
-  res.render(path.join(__dirname, '../web', 'main.ejs'),{ errorMessage:null});
-  // 데이터 처리 로직
-  //const data = {
-  //  message: 'Hello, server!',
-  // timestamp: new Date().toISOString(),
-  //};
-  //res.json(data);
+  res.redirect('/signin');
 });
 
 
