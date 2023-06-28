@@ -20,33 +20,36 @@ function signin(app,fs,crypto,path) {
     return hashedPassword;
   }
   
-  app.post('/signin', (req, res) => {
-    // 텍스트를 추가할 HTML 요소 선택
+  app.route('/signin')
+  .get((req, res) => {
+    const errorMessage = req.query.errorMessage || null;
+    res.render(path.join(__dirname, '../web', 'main.ejs'),{errorMessage:errorMessage});
+  })
+  .post((req, res) => {
     const userID = req.body.id;
     const userPassword = req.body.userPassword;
     const encryptedPassword = hashPassword(userPassword);
 
     if (users.userid !== userID && encryptedPassword === users.password) {
       const errorMessage = 'Not Found ID'; // 오류 메시지 예시
-      res.render(path.join(__dirname, '../web', 'main.ejs'), { errorMessage: errorMessage }); // index.ejs 파일 렌더링    
+      res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage)); // index.ejs 파일 렌더링    
     }
 
     if (users.userid !== userID && encryptedPassword !== users.password) {
       const errorMessage = 'Not Found ID and Password'; // 오류 메시지 예시
-      res.render(path.join(__dirname, '../web', 'main.ejs'), { errorMessage: errorMessage }); // index.ejs 파일 렌더링    
+      res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage)); // index.ejs 파일 렌더링    
     }
 
     if (users.userid === userID && encryptedPassword !== users.password) {
       const errorMessage = 'Not Found Password'; // 오류 메시지 예시
-      res.render(path.join(__dirname, '../web', 'main.ejs'), { errorMessage: errorMessage }); // index.ejs 파일 렌더링      
+      res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage)); // index.ejs 파일 렌더링      
     }
 
     if (users.userid === userID && encryptedPassword === users.password){
       console.log('User logged in successfully.');
       res.render(path.join(__dirname, '../web/lobby', 'lobby.ejs')); // index.ejs 파일 렌더링     
-      //res.sendFile(path.join(__dirname, '../web', 'main.html')); 
     }
-  
+    
   });
 }
 

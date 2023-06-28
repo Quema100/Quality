@@ -23,7 +23,7 @@ body{
     font-weight: 500;
 }
 
-#signup input[type = "text"],#signup input[type = "password"]{
+#forgot input[type = "text"]{
     border: 0;
     background: none;
     display: block;
@@ -38,17 +38,17 @@ body{
     transition: 0.3s;
 }
 
-#signup input[type = "text"]:focus,#signup input[type = "password"]:focus{
+#forgot input[type = "text"]:focus{
     width: 240px;
     height: 20px;
     border-color: white;
 }
 
-#signup input ::placeholder{
+#forgot input ::placeholder{
     font-size: 10px;
 }
 
-#signup input[type = "submit"]{
+#forgot input[type = "submit"]{
     border: 0;
     background: none;
     display: block;
@@ -63,10 +63,11 @@ body{
     transition: 0.3s;
 }
 
-#signup input[type = "submit"]:hover{
+#forgot input[type = "submit"]:hover{
     background: #606060;
     border-color: white;
 }
+
 
 .wrapper p{
     font-size: smaller;
@@ -74,4 +75,22 @@ body{
     color: white;
     transition: .3s;
     animation: slow 5s;
+}
+/*-----animation----*/
+@keyframes slow {
+    0% {
+        opacity: 0;
+    }
+    25%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }

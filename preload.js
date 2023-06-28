@@ -21,6 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
   let close = document.getElementById('close');
   let mini = document.getElementById('mini');
   let max = document.getElementById('max');
+  let back = document.getElementById("back")
 
   close.addEventListener('click', () => {
     ipcRenderer.send('close-window');
@@ -32,6 +33,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
   max.addEventListener('click', () => {
     ipcRenderer.send('maximize-window');
+  });
+  back.addEventListener("click", () => {
+    ipcRenderer.send('goBack');
   });
 });
 

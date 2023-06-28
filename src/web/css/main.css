@@ -68,19 +68,25 @@ body{
     border-color: white;
 }
 
-.wrapper a{
+.wrapper div{
+    font-size: small;
+    color: #606060;
+}
+
+.wrapper > div > a{
     font-size: small;
     text-decoration: none;
     color: #606060;
     transition: .3s;
 }
 
-.wrapper a:hover{
+.wrapper > div > a:hover{
     color: white;
 }
 
 .wrapper p{
     font-size: smaller;
+    text-align: center;
     color: white;
     transition: .3s;
     animation: slow 5s;

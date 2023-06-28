@@ -60,8 +60,10 @@ function initTrayIconMenu() {
 const createWindow = () => {
   win = new BrowserWindow({
     frame: false, // 타이틀바 숨기기
-    width: 1000,
-    height: 600,
+    width: 1200,
+    height: 650,
+    minWidth: 950,
+    minHeight: 500,
     icon: path.join(__dirname, './icon/biggericon.png'),
     webPreferences: {
       nodeIntegration: false,
@@ -118,4 +120,10 @@ ipcMain.on('maximize-window', () => {
   } else {
     win.maximize();
   }
+});
+
+  // IPC 메시지 수신 대기
+ipcMain.on('goBack', () => {
+  // 뒤로 가기
+  win.webContents.goBack();
 });

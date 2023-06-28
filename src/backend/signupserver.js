@@ -25,41 +25,48 @@ function signup(app,fs,crypto,path){
       return hashedPassword;
     }
     
-    app.post('/sign', (req, res) => {
+    app.route('/signup')
+    .get((req, res) => {
+      const errorMessage = req.query.errorMessage || null;
+      const successMessage = req.query.successMessage || null;
+      res.render(path.join(__dirname, '../web/signup', 'signup.ejs'), { errorMessage: errorMessage, successMessage: successMessage });
+    })
+    .post((req, res) => {
       const userID = req.body.id;
-      const hashedPassword= req.body.userPassword;
+      const hashedPassword = req.body.userPassword;
       // 비밀번호를 암호화하여 저장
       const userPassword = hashPassword(hashedPassword);
-    
+  
       const newUser = {
         userid: userID,
         password: userPassword
       };
-
-
+  
       if (users.userid === userID) {
         console.log('User already exists. Cannot create a duplicate user.');
-        res.render(path.join(__dirname, '../web', 'main.ejs'),{ errorMessage:null});
+        const errorMessage = 'An account with the same ID already exists.';
+        return res.redirect('/signup?errorMessage=' + encodeURIComponent(errorMessage));
       }
-    
+  
       // 데이터를 추가하는 대신에 기존 데이터를 유지하도록 할 때는 아래의 코드를 사용합니다.
       if (Object.keys(users).length > 0) {
         console.log('Cannot add new user. Existing data already exists.');
-        return res.render(path.join(__dirname, '../web', 'main.ejs'),{ errorMessage:null});
+        const errorMessage = 'An account already exists.';
+        return res.redirect('/signup?errorMessage=' + encodeURIComponent(errorMessage));
       }
-    
+  
       users = newUser;
-    
+  
       fs.writeFile(filePath, JSON.stringify(users), 'utf-8', (err) => {
         if (err) {
           console.log(err);
           return res.status(500).send('Error occurred while saving user data.');
         }
         console.log('New user added to the file.');
-        res.render(path.join(__dirname, '../web', 'main.ejs'),{ errorMessage:null});
+        const successMessage = 'Account created successfully.';
+        return res.redirect('/signup?successMessage=' + encodeURIComponent(successMessage));
       });
-
-    });
+    })
 }
 
 module.exports = signup
