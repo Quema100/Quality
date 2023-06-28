@@ -1,4 +1,4 @@
-function forgotserver (app,fs,path){
+function forgot (app,fs,path){
   const qualityDir = '/Quality'; // Quality 폴더 경로
   const filePath = path.join(qualityDir, 'users.json'); // users.json 파일 경로
   
@@ -33,4 +33,4 @@ function forgotserver (app,fs,path){
   });
 }
 
-module.exports = forgotserver
+module.exports = forgot

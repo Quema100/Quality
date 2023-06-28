@@ -5,7 +5,7 @@ const path = require('path');
 const crypto = require("crypto");
 const signup = require('./signupserver.js')
 const signin = require('./signinserver.js')
-const forgotserver = require('./forgotserver.js')
+const forgot = require('./forgotserver.js')
 const port = 3000;
 
 app.set('view engine', 'ejs'); // EJS를 뷰 엔진으로 설정
@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 });
 
 
-forgotserver(app,fs,path)
+forgot(app,fs,path)
 
 signin(app,fs,crypto,path)
 
