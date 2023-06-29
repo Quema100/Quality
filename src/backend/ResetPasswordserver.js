@@ -23,8 +23,14 @@ function ResetPassword(app,fs,crypto,path){
     
     app.route('/resetpassword')
     .get((req, res) => {
+      const userID = req.query.userID;
+
+      if (!userID || userID !== users.userid) {
+        return res.redirect('/forgot');
+      } else {
         const errorMessage = req.query.errorMessage || null;
-        return res.render(path.join(__dirname, '../web/ResetPassword', 'ResetPassword.ejs'),{errorMessage:errorMessage});     
+        return res.render(path.join(__dirname, '../web/ResetPassword', 'ResetPassword.ejs'), { errorMessage:errorMessage });
+      }
     })
     .post((req, res) => {
         const NewPassword = req.body.NewPassword;
@@ -33,7 +39,12 @@ function ResetPassword(app,fs,crypto,path){
 
         if(NewPassword !== ReEnterPassword){
           const errorMessage = 'The password is incorrect.';
-          return res.redirect('/resetpassword?errorMessage=' + encodeURIComponent(errorMessage)); 
+          return res.redirect('/resetpassword?userID='+ encodeURIComponent(users.userid) + '&errorMessage=' + encodeURIComponent(errorMessage)); 
+        }
+
+        if(userPassword === users.password){
+          const errorMessage = 'Cannot reuse previous password.'
+          return res.redirect('/resetpassword?userID='+ encodeURIComponent(users.userid) + '&errorMessage=' + encodeURIComponent(errorMessage))
         }
         
         users.password = userPassword;
@@ -43,8 +54,8 @@ function ResetPassword(app,fs,crypto,path){
             console.log(err);
             return res.status(500).send('Error occurred while saving user data.');
           }
-          console.log('New user added to the file.');
-          res.redirect('/signin')
+          const successMessage = 'You have successfully changed your password.';
+          res.redirect('/signin?successMessage=' + encodeURIComponent(successMessage));
         });
 
     })

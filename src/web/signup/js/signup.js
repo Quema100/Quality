@@ -4,7 +4,7 @@ function hideMessage() {
     if (errorMessage) {
             errorMessage.style.display = 'none';
         }else if (successMessage){
-            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
         }
     }
 

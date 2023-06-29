@@ -27,7 +27,9 @@
                 <input id="submitButton" type="submit" value="Sign In" required>
                 <% if (errorMessage) { %>
                     <p id="errorMessage"><%= errorMessage %></p>
-                <% } %> 
+                <% } else if (successMessage) { %>
+                    <p id="successMessage"><%= successMessage %></p>
+                <% } %>
             </form>
             <div>Forgot your <a href="/forgot">Password?</a> | <a href="/signup">Sign Up</a></div>
         </div>

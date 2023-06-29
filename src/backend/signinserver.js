@@ -23,7 +23,8 @@ function signin(app,fs,crypto,path) {
   app.route('/signin')
   .get((req, res) => {
     const errorMessage = req.query.errorMessage || null;
-    res.render(path.join(__dirname, '../web', 'main.ejs'),{errorMessage:errorMessage});
+    const successMessage = req.query.successMessage || null;
+    res.render(path.join(__dirname, '../web', 'main.ejs'),{errorMessage:errorMessage,successMessage:successMessage});
   })
   .post((req, res) => {
     const userID = req.body.id;
