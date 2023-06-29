@@ -25,11 +25,6 @@
                 <input id="passwordInput" type="password" name="userPassword" placeholder="Password" required oninvalid="this.setCustomValidity('Input your Password')" oninput="this.setCustomValidity('')">
                 <input id="submitButton" type="submit" value="Sign Up" required>
             </form>
-            <% if (errorMessage) { %>
-                <p id="errorMessage"><%= errorMessage %></p>
-            <% } else if (successMessage) { %>
-                <p id="successMessage"><%= successMessage %></p>
-            <% } %>
         </div>
     </body>
 </html>

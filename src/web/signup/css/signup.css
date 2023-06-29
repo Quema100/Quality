@@ -68,7 +68,7 @@ body{
     border-color: white;
 }
 
-#signup p{
+.wrapper p{
     font-size: smaller;
     text-align: center;
     color: white;
