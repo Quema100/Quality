@@ -27,7 +27,7 @@ function forgot (app,fs,path){
 
     if (users.userid === userID){
       console.log('User logged in successfully.');
-      res.sendFile(path.join(__dirname, '../web/ResetPassword', 'ResetPassword.html'));    
+      return res.redirect('/resetpassword')
     }
   
   });

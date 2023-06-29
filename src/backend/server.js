@@ -6,6 +6,7 @@ const crypto = require("crypto");
 const signup = require('./signupserver.js')
 const signin = require('./signinserver.js')
 const forgot = require('./forgotserver.js')
+const ResetPassword = require('./ResetPasswordserver.js')
 const port = 3000;
 
 app.set('view engine', 'ejs'); // EJS를 뷰 엔진으로 설정
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
   res.redirect('/signin');
 });
 
+ResetPassword(app,fs,crypto,path)
 
 forgot(app,fs,path)
 
