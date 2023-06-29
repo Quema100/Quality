@@ -35,13 +35,6 @@ window.addEventListener('DOMContentLoaded', () => {
     ipcRenderer.send('maximize-window');
   });
   back.addEventListener("click", () => {
-    const referer = document.referrer;
-
-    if (referer.includes("?errorMessage=")) {
-      const cleanURL = referer.split("?errorMessage=")[0];
-      ipcRenderer.send("goBackToSignin", cleanURL);
-    } else {
-      ipcRenderer.send('goBack');
-    }
+    ipcRenderer.send('goBack');
   });
 });

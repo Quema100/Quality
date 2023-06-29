@@ -122,12 +122,6 @@ ipcMain.on('maximize-window', () => {
   }
 });
 
-  // IPC 메시지 수신 대기
-ipcMain.on('goBack', () => {
-  // 뒤로 가기
-  win.webContents.goBack();
-});
-
-ipcMain.on("goBackToSignin", (event, url) => {
-  win.loadURL(url);
+ipcMain.on('goBack', (event) => {
+  event.sender.goBack();
 });

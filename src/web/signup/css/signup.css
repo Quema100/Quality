@@ -68,12 +68,23 @@ body{
     border-color: white;
 }
 
-.wrapper p{
+#signup p{
     font-size: smaller;
     text-align: center;
     color: white;
     transition: .3s;
     animation: slow 5s;
+}
+
+.wrapper a{
+    font-size: small;
+    text-decoration: none;
+    color: #606060;
+    transition: .3s;
+}
+
+.wrapper a:hover{
+    color: white;
 }
 /*----animation----*/
 @keyframes slow {
