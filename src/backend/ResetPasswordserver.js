@@ -33,7 +33,7 @@ function ResetPassword(app,fs,crypto,path){
 
         if(NewPassword !== ReEnterPassword){
           const errorMessage = 'The password is incorrect.';
-          res.redirect('/resetpassword?errorMessage=' + encodeURIComponent(errorMessage)); 
+          return res.redirect('/resetpassword?errorMessage=' + encodeURIComponent(errorMessage)); 
         }
         
         users.password = userPassword;
