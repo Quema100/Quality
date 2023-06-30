@@ -6,7 +6,7 @@ const crypto = require("crypto");
 const signup = require('./signupserver.js')
 const signin = require('./signinserver.js')
 const forgot = require('./forgotserver.js')
-const lobby = require('./lobby.js')
+const lobby = require('./lobbyserver.js')
 const ResetPassword = require('./ResetPasswordserver.js')
 const port = 3000;
 
