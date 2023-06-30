@@ -4,10 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-        <link sizes="16x16" href="../../icon/biggericon.png" rel="icon" type="image/x-icon">
+        <link sizes="16x16" href="/img/biggericon.png" rel="icon" type="image/x-icon">
         <link href="/css/tittlebar.css" rel="stylesheet">
-        <link href="/css/lobby.css" rel="stylesheet">
-        <script src ="/js/lobby.js"></script>
+        <link href="/css/404.css" rel="stylesheet">
+        <script src="/js/404.js"></script>
         <title>Quality</title>
     </head>
     <body>     
@@ -16,9 +16,13 @@
                 <button id="close">X</button>
                 <button id="max">=</button>
                 <button id="mini">-</button>
+                <button id="back"><</button>
             </div>
         </header>
-        <div id="404">404</div>
-        <div id="Not">Not Found</div>
+        <div class="center">
+            <a id="error">404</a>
+            <p id="Not">Not Found</p>
+            <img src="/img/biggericon.png" alt="Quema" id="image" />
+        </div>
     </body>
 </html>

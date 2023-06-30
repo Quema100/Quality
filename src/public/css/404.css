@@ -1,0 +1,37 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #444444;
+    overflow: hidden;
+}
+
+.center {
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.center #error {
+    transition: .3s;
+}
+
+.center #error:hover {
+    color: #444444;
+}
+
+.center #Not {
+    transition: .3s;
+}
+
+.center #Not:hover {
+    color: #444444;
+}
+
+.center #image {
+    display: none;
+}

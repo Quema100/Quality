@@ -41,8 +41,7 @@ signup(app,fs,crypto,path)
 lobby(app,fs,path)
 
 app.use((req, res, next) => {
-  res.status(404).sendFile(__dirname, '../../html', '404.ejs')
-  next()
+  res.status(404).sendFile(path.join(__dirname, '../html', '404.html'));
 });
 // 서버 시작
 const start = () => {
