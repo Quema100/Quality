@@ -13,7 +13,7 @@ function ResetPassword(app,fs,crypto,path){
       return hashedPassword;
     }
     
-    app.route('/resetpassword')
+    app.route('/forgot/resetpassword')
     .get((req, res) => {
           // users.json 파일이 존재하는 경우 이전 데이터를 읽어옴
       if (fs.existsSync(filePath)) {
@@ -38,12 +38,12 @@ function ResetPassword(app,fs,crypto,path){
 
         if(NewPassword !== ReEnterPassword){
           const errorMessage = 'The password is incorrect.';
-          return res.redirect('/resetpassword?userID='+ encodeURIComponent(users.userid) + '&errorMessage=' + encodeURIComponent(errorMessage)); 
+          return res.redirect('/forgot/resetpassword?userID='+ encodeURIComponent(users.userid) + '&errorMessage=' + encodeURIComponent(errorMessage)); 
         }
 
         if(userPassword === users.password){
           const errorMessage = 'Cannot reuse previous password.'
-          return res.redirect('/resetpassword?userID='+ encodeURIComponent(users.userid) + '&errorMessage=' + encodeURIComponent(errorMessage))
+          return res.redirect('/forgot/resetpassword?userID='+ encodeURIComponent(users.userid) + '&errorMessage=' + encodeURIComponent(errorMessage))
         }
         
         users.password = userPassword;

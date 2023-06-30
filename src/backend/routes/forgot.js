@@ -27,7 +27,7 @@ function forgot (app,fs,path){
 
     if (users.userid === userID){
       // 세션 대신 query string으로 userID 전달
-      return res.redirect('/resetpassword?userID=' + encodeURIComponent(userID));
+      return res.redirect('/forgot/resetpassword?userID=' + encodeURIComponent(userID));
     }
   
   });
