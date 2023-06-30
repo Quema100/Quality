@@ -23,7 +23,7 @@ function signin(app,fs,crypto,path) {
     }
     const errorMessage = req.query.errorMessage || null;
     const successMessage = req.query.successMessage || null;
-    res.render(path.join(__dirname, '../view', 'main.ejs'),{errorMessage:errorMessage,successMessage:successMessage});
+    res.render(path.join(__dirname, '../../view', 'main.ejs'),{errorMessage:errorMessage,successMessage:successMessage});
   })
   .post((req, res) => {
     const userID = req.body.id;

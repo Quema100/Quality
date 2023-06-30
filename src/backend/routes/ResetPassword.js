@@ -28,7 +28,7 @@ function ResetPassword(app,fs,crypto,path){
         return res.redirect('/forgot');
       } else {
         const errorMessage = req.query.errorMessage || null;
-        return res.render(path.join(__dirname, '../view', 'ResetPassword.ejs'), { errorMessage:errorMessage });
+        return res.render(path.join(__dirname, '../../view', 'ResetPassword.ejs'), { errorMessage:errorMessage });
       }
     })
     .post((req, res) => {

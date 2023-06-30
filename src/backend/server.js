@@ -3,15 +3,15 @@ const fs = require('fs')
 const app = express();
 const path = require('path');
 const crypto = require("crypto");
-const signup = require('./signupserver.js')
-const signin = require('./signinserver.js')
-const forgot = require('./forgotserver.js')
-const lobby = require('./lobbyserver.js')
-const ResetPassword = require('./ResetPasswordserver.js')
+const signup = require('./routes/signup')
+const signin = require('./routes/signin')
+const forgot = require('./routes/forgot')
+const lobby = require('./routes/lobby')
+const ResetPassword = require('./routes/ResetPassword')
 const port = 3000;
 
 app.set('view engine', 'ejs'); // EJS를 뷰 엔진으로 설정
-app.set('views', path.join(__dirname, '../../view'));
+app.set('views', path.join(__dirname, '../view'));
 app.use(express.json()); // JSON 데이터 파싱을 위한 Body Parser 미들웨어 등록
 app.use(express.urlencoded({ extended: true })); // URL 인코딩된 데이터 파싱을 위한 Body Parser 미들웨어 등록
 

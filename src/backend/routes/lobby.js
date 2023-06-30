@@ -21,7 +21,7 @@ function lobby (app,fs,path){
       if(!id || id !== users.userid){
           return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage))
       }else{
-        res.sendFile(path.join(__dirname, '../view', 'lobby.html'));
+        res.sendFile(path.join(__dirname, '../../html', 'lobby.html'));
       }
 
     })
