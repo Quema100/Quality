@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, Tray, ipcMain} = require('electron');
+const { app, BrowserWindow, Menu, Tray, ipcMain, globalShortcut} = require('electron');
 const path = require('path')
 // 서버 모듈을 가져온다.
 const server = require('./src/backend/server.js');
@@ -88,6 +88,13 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   createWindow()
+  globalShortcut.register("ctrl+l", () => {
+    let browser = BrowserWindow.getFocusedWindow();
+    if(browser.webContents.getURL() === "http://localhost:3000/signin"){
+      return
+    }
+    browser.loadURL('http://localhost:3000/signin'); // Replace with your actual signin route URL
+  });
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
