@@ -5,14 +5,6 @@ function ResetPassword(app,fs,crypto,path){
 
     let users = {};
     
-    // users.json 파일이 존재하는 경우 이전 데이터를 읽어옴
-    if (fs.existsSync(filePath)) {
-      const fileContent = fs.readFileSync(filePath, 'utf-8');
-      if (fileContent) {
-        users = JSON.parse(fileContent);
-      }
-    }
-    
     function hashPassword(password) {
       // 비밀번호를 해시화하는 함수
       const hash = crypto.createHash('sha256');
@@ -23,6 +15,13 @@ function ResetPassword(app,fs,crypto,path){
     
     app.route('/resetpassword')
     .get((req, res) => {
+          // users.json 파일이 존재하는 경우 이전 데이터를 읽어옴
+      if (fs.existsSync(filePath)) {
+        const fileContent = fs.readFileSync(filePath, 'utf-8');
+        if (fileContent) {
+          users = JSON.parse(fileContent);
+        }
+      }
       const userID = req.query.userID;
 
       if (!userID || userID !== users.userid) {

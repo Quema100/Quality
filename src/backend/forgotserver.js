@@ -4,16 +4,16 @@ function forgot (app,fs,path){
   
   let users = {};
   
-  // users.json 파일이 존재하는 경우 이전 데이터를 읽어옴
-  if (fs.existsSync(filePath)) {
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    if (fileContent) {
-      users = JSON.parse(fileContent);
-    }
-  }
 
   app.route('/forgot')
   .get((req, res) => {
+      // users.json 파일이 존재하는 경우 이전 데이터를 읽어옴
+    if (fs.existsSync(filePath)) {
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      if (fileContent) {
+        users = JSON.parse(fileContent);
+      }
+    }
     const errorMessage = req.query.errorMessage || null;
     res.render(path.join(__dirname, '../web/forgot', 'forgot.ejs'), { errorMessage:errorMessage}); 
   })

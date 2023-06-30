@@ -14,9 +14,6 @@ function signin(app,fs,crypto,path) {
   
   app.route('/signin')
   .get((req, res) => {
-    const errorMessage = req.query.errorMessage || null;
-    const successMessage = req.query.successMessage || null;
-    res.render(path.join(__dirname, '../web', 'main.ejs'),{errorMessage:errorMessage,successMessage:successMessage});
     // users.json 파일이 존재하는 경우 이전 데이터를 읽어옴
     if (fs.existsSync(filePath)) {
       const fileContent = fs.readFileSync(filePath, 'utf-8');
@@ -24,6 +21,9 @@ function signin(app,fs,crypto,path) {
         users = JSON.parse(fileContent);
       }
     }
+    const errorMessage = req.query.errorMessage || null;
+    const successMessage = req.query.successMessage || null;
+    res.render(path.join(__dirname, '../web', 'main.ejs'),{errorMessage:errorMessage,successMessage:successMessage});
   })
   .post((req, res) => {
     const userID = req.body.id;
