@@ -3,14 +3,6 @@ function signin(app,fs,crypto,path) {
   const filePath = path.join(qualityDir, 'users.json'); // users.json 파일 경로
   
   let users = {};
-  
-  // users.json 파일이 존재하는 경우 이전 데이터를 읽어옴
-  if (fs.existsSync(filePath)) {
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    if (fileContent) {
-      users = JSON.parse(fileContent);
-    }
-  }
     
   function hashPassword(password) {
     // 비밀번호를 해시화하는 함수
@@ -25,6 +17,13 @@ function signin(app,fs,crypto,path) {
     const errorMessage = req.query.errorMessage || null;
     const successMessage = req.query.successMessage || null;
     res.render(path.join(__dirname, '../web', 'main.ejs'),{errorMessage:errorMessage,successMessage:successMessage});
+    // users.json 파일이 존재하는 경우 이전 데이터를 읽어옴
+    if (fs.existsSync(filePath)) {
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      if (fileContent) {
+        users = JSON.parse(fileContent);
+      }
+    }
   })
   .post((req, res) => {
     const userID = req.body.id;
