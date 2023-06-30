@@ -11,7 +11,7 @@ const ResetPassword = require('./ResetPasswordserver.js')
 const port = 3000;
 
 app.set('view engine', 'ejs'); // EJS를 뷰 엔진으로 설정
-app.set('views', path.join(__dirname, '../web'));
+app.set('views', path.join(__dirname, '../../view'));
 app.use(express.json()); // JSON 데이터 파싱을 위한 Body Parser 미들웨어 등록
 app.use(express.urlencoded({ extended: true })); // URL 인코딩된 데이터 파싱을 위한 Body Parser 미들웨어 등록
 
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 });
 
 // 정적 파일 제공을 위한 미들웨어 설정
-app.use(express.static(path.join(__dirname, '../web')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // 라우트 정의
 app.get('/', (req, res) => {
@@ -40,6 +40,10 @@ signup(app,fs,crypto,path)
 
 lobby(app,fs,path)
 
+app.use((req, res, next) => {
+  res.status(404).send('Not Found');
+  next()
+});
 // 서버 시작
 const start = () => {
   app.listen(port,'localhost', () => {

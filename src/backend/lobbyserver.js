@@ -5,7 +5,7 @@ function lobby (app,fs,path){
 
     let users = {};
 
-    app.route('/lobby')
+    app.route('/signin/lobby')
     .get((req, res)=>{
       // users.json 파일이 존재하는 경우 이전 데이터를 읽어옴
       if (fs.existsSync(filePath)) {
@@ -21,7 +21,7 @@ function lobby (app,fs,path){
       if(!id || id !== users.userid){
           return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage))
       }else{
-        res.sendFile(path.join(__dirname, '../web/lobby', 'lobby.html'));
+        res.sendFile(path.join(__dirname, '../view', 'lobby.html'));
       }
 
     })

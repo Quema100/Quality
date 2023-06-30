@@ -29,7 +29,7 @@ function signup(app,fs,crypto,path){
       }
       const errorMessage = req.query.errorMessage || null;
       const successMessage = req.query.successMessage || null;
-      res.render(path.join(__dirname, '../web/signup', 'signup.ejs'), { errorMessage: errorMessage, successMessage: successMessage });
+      res.render(path.join(__dirname, '../view', 'signup.ejs'), { errorMessage: errorMessage, successMessage: successMessage });
     })
     .post((req, res) => {
       const userID = req.body.id;

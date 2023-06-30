@@ -15,7 +15,7 @@ function forgot (app,fs,path){
       }
     }
     const errorMessage = req.query.errorMessage || null;
-    res.render(path.join(__dirname, '../web/forgot', 'forgot.ejs'), { errorMessage:errorMessage}); 
+    res.render(path.join(__dirname, '../view', 'forgot.ejs'), { errorMessage:errorMessage}); 
   })
   .post((req, res) => {
     const userID = req.body.id;
