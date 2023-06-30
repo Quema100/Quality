@@ -6,6 +6,7 @@ const crypto = require("crypto");
 const signup = require('./signupserver.js')
 const signin = require('./signinserver.js')
 const forgot = require('./forgotserver.js')
+const lobby = require('./lobby.js')
 const ResetPassword = require('./ResetPasswordserver.js')
 const port = 3000;
 
@@ -35,10 +36,9 @@ forgot(app,fs,path)
 
 signin(app,fs,crypto,path)
 
-
 signup(app,fs,crypto,path)
 
-
+lobby(app,fs,path)
 
 // 서버 시작
 const start = () => {

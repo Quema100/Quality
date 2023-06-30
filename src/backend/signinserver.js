@@ -48,7 +48,7 @@ function signin(app,fs,crypto,path) {
 
     if (users.userid === userID && encryptedPassword === users.password){
       console.log('User logged in successfully.');
-      return res.render(path.join(__dirname, '../web/lobby', 'lobby.ejs')); // index.ejs 파일 렌더링     
+      return res.redirect('/lobby?userID=' + encodeURIComponent(userID));
     }
     
   });
