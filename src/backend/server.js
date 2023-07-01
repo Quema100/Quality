@@ -7,6 +7,8 @@ const signup = require('./routes/signup')
 const signin = require('./routes/signin')
 const forgot = require('./routes/forgot')
 const lobby = require('./routes/lobby')
+const contents = require('./routes/contents')
+const developer = require('./routes/Developer')
 const ResetPassword = require('./routes/ResetPassword')
 const port = 3000;
 
@@ -39,6 +41,10 @@ signin(app,fs,crypto,path)
 signup(app,fs,crypto,path)
 
 lobby(app,fs,path)
+
+contents(app,fs,path)
+
+developer(app,fs,path)
 
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, '../html', '404.html'));

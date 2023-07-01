@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <link sizes="16x16" href="/img/biggericon.png" rel="icon" type="image/x-icon">
+        <link rel="stylesheet" href="/css/contents.css">        
+        <link href="/css/tittlebar.css" rel="stylesheet">
+        <script src ="/js/contents.js"></script>
+        <title>Quality</title>
+    </head>
+    <body>     
+        <header>
+            <div id="menu">
+                <button id="close">X</button>
+                <button id="max">=</button>
+                <button id="mini">-</button>
+            </div>
+            <nav>
+                <div id="center">
+                    <ul>
+                      <li>
+                        <a href="/signin/lobby?userID=<%= userID %>">Home</a>
+                      </li>
+                      <li>
+                        <a href="/signin/contents?userID=<%= userID %>">contents</a>
+                      </li>
+                      <li>
+                        <a href="/signin/developer?userID=<%= userID %>">Developer</a>
+                      </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div>contents</div>
+    </body>
+</html>

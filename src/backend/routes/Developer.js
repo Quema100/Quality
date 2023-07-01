@@ -1,11 +1,11 @@
-function lobby (app,fs,path){
+function Developer (app,fs,path){
     const qualityDir = '/Quality'; // Quality 폴더 경로
     const filePath = path.join(qualityDir, 'users.json'); // users.json 파일 경로
     
 
     let users = {};
 
-    app.route('/signin/lobby')
+    app.route('/signin/developer')
     .get((req, res)=>{
       // users.json 파일이 존재하는 경우 이전 데이터를 읽어옴
       if (fs.existsSync(filePath)) {
@@ -21,7 +21,7 @@ function lobby (app,fs,path){
       if(!userID || userID !== users.userid){
           return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage))
       }else{
-        res.render(path.join(__dirname, '../../view', 'lobby.ejs'),{userID:userID});
+        res.render(path.join(__dirname, '../../view', 'Developer.ejs'),{userID:userID});
       }
 
     })
@@ -32,4 +32,4 @@ function lobby (app,fs,path){
 
 }
 
-module.exports = lobby
+module.exports = Developer
