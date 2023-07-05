@@ -13,7 +13,10 @@ contextBridge.exposeInMainWorld(
           if (validChannels.includes(channel)) {
               ipcRenderer.on(channel, (event, ...args) => func(...args));
           }
-      }
+      },
+      openExternalLink: (url) => {
+        ipcRenderer.send('openExternalLink', url);
+      },
   }
 );
 

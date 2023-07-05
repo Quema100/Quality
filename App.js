@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, Tray, ipcMain, globalShortcut} = require('electron');
+const { app, BrowserWindow, Menu, Tray, ipcMain, globalShortcut, shell} = require('electron');
 const path = require('path')
 // 서버 모듈을 가져온다.
 const server = require('./src/backend/server.js');
@@ -131,4 +131,8 @@ ipcMain.on('maximize-window', () => {
 
 ipcMain.on('goBack', (event) => {
   event.sender.goBack();
+});
+
+ipcMain.on('openExternalLink', (event, url) => {
+  shell.openExternal(url);
 });
