@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs')
 const app = express();
 const path = require('path');
+const { spawn } = require('child_process');
 const crypto = require("crypto");
 const signup = require('./routes/signup')
 const signin = require('./routes/signin')
@@ -42,7 +43,7 @@ signup(app,fs,crypto,path)
 
 lobby(app,fs,path)
 
-contents(app,fs,path)
+contents(app,fs,path,spawn)
 
 developer(app,fs,path)
 

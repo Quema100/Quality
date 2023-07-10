@@ -1,4 +1,4 @@
-function contents (app,fs,path){
+function contents (app,fs,path,spawn){
     const qualityDir = '/Quality'; // Quality 폴더 경로
     const filePath = path.join(qualityDir, 'users.json'); // users.json 파일 경로
     
@@ -23,6 +23,22 @@ function contents (app,fs,path){
       }else{
         res.render(path.join(__dirname, '../../view', 'contents.ejs'),{userID:userID});
       }
+
+
+    // 파이썬 코드 실행
+    //const pythonProcess = spawn('python', [path.join(__dirname, './python/contents.py')]);
+
+    //pythonProcess.stdout.on('data', (data) => {
+      //  console.log(`python print: ${data}`);
+    //});
+
+    //pythonProcess.stderr.on('data', (data) => {
+      //  console.error(`python error: ${data}`);
+    //});
+
+    //pythonProcess.on('close', (code) => {
+     //   console.log(`python exit: ${code}`);
+    //});
 
     })
     .post((req, res)=>{
