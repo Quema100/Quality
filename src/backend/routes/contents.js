@@ -21,24 +21,29 @@ function contents (app,fs,path,spawn){
       if(!userID || userID !== users.userid){
           return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage))
       }else{
-        res.render(path.join(__dirname, '../../view', 'contents.ejs'),{userID:userID});
+        res.render(path.join(__dirname, '../../view', 'contents.ejs'),{userID:userID,wifispeed:null});
+        console.log('in contents')
       }
 
 
     // 파이썬 코드 실행
-    //const pythonProcess = spawn('python', [path.join(__dirname, './python/contents.py')]);
+    const pythonProcess = spawn('python', [path.join(__dirname, './python/contents.py')]);
 
-    //pythonProcess.stdout.on('data', (data) => {
-      //  console.log(`python print: ${data}`);
-    //});
-
-    //pythonProcess.stderr.on('data', (data) => {
-      //  console.error(`python error: ${data}`);
-    //});
-
-    //pythonProcess.on('close', (code) => {
-     //   console.log(`python exit: ${code}`);
-    //});
+    pythonProcess.stdout.on('data', (data) => {
+      const output = data.toString();
+      console.log(output);
+      const wifispeed = `${output}`;
+      return res.redirect('/signin/contents?userID='+ encodeURIComponent(users.userid) + '&wifispeed=' + encodeURIComponent(wifispeed)); 
+    });
+    
+    pythonProcess.stderr.on('data', (data) => {
+      const error = data.toString();
+      console.error(error);
+    });
+    
+    pythonProcess.on('close', (code) => {
+      console.log(`pythonProcessQuit: ${code}`);
+    });
 
     })
     .post((req, res)=>{
