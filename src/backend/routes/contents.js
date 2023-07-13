@@ -21,24 +21,28 @@ function contents (app,fs,path,spawn){
       if(!userID || userID !== users.userid){
           return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage))
       }else{
-        res.render(path.join(__dirname, '../../view', 'contents.ejs'),{userID:userID,wifispeed:null});
+        const wifispeed = req.query.wifispeed || null;
+        res.render(path.join(__dirname, '../../view', 'contents.ejs'),{userID:userID, wifispeed:wifispeed});
         console.log('in contents')
         // 파이썬 코드 실행
-        const pythonProcess = spawn('python', [path.join(__dirname, '.', 'python', 'contents.py')]);
+        const pythonScriptPath = path.join(__dirname, '.', 'python', 'contents.py');
+        const pythonProcess = spawn('python', [pythonScriptPath]);
 
         pythonProcess.stdout.on('data', (data) => {
           const output = data.toString();
-          console.log(output);
-          return res.redirect('/signin/contents?userID=' + encodeURIComponent(userID)+ '&wifispeed'+encodeURIComponent(output))
+          console.log(output); // 선택적인 출력
+          // 출력이 있을 때마다 응답 보내기
+          res.render(path.join(__dirname, '../../view', 'contents.ejs'), { userID: userID, wifispeed: output });        
         });
-        
+  
         pythonProcess.stderr.on('data', (data) => {
           const error = data.toString();
           console.error(error);
         });
-        
+  
         pythonProcess.on('close', (code) => {
           console.log(`pythonProcessQuit: ${code}`);
+          res.end(); // 응답 종료
         });
       }
     })
