@@ -1,39 +1,29 @@
 import os
 import speedtest
 import time
-import asyncio
 
-async def measure_speed():
-    loop = asyncio.get_event_loop()
+def measure_speed():
     s = speedtest.Speedtest()
-    await loop.run_in_executor(None, s.get_best_server)
-    
-    def calculate_download_speed():
-        return s.download() / 8000000
-    
-    def calculate_upload_speed():
-        return s.upload() / 8000000
-    
-    download_speed = await loop.run_in_executor(None, calculate_download_speed)
-    upload_speed = await loop.run_in_executor(None, calculate_upload_speed)
-    ping = await loop.run_in_executor(None, lambda: s.results.ping)
-    
+    s.get_best_server()
+    download_speed = s.download() / 8000000
+    upload_speed = s.upload() / 8000000
+    ping = s.results.ping
     output = 'Download: {:0.2f} Mbps, Upload: {:0.2f} Mbps, Ping: {} ms'.format(download_speed, upload_speed, ping)
     return output
 
-async def main():
+def main():
     while True:
         try:
-            output = await measure_speed()
+            output = measure_speed()
             print(output)
-            await asyncio.sleep(3)
+            time.sleep(5)
         
         except KeyboardInterrupt:
-            print('exit')
+            print('Program stopped by the user.')
             break
         
         except Exception as e:
             print('error:', str(e))
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    main()
