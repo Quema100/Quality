@@ -1,22 +1,14 @@
 import os
 import speedtest
 import time
-
-def measure_speed():
-    s = speedtest.Speedtest()
-    s.get_best_server()
-    download_speed = s.download() / 8000000
-    upload_speed = s.upload() / 8000000
-    ping = s.results.ping
-    output = 'Download: {:0.2f} Mbps, Upload: {:0.2f} Mbps, Ping: {} ms'.format(download_speed, upload_speed, ping)
-    return output
+from measure_speed import measure_speed
 
 def main():
     while True:
         try:
             output = measure_speed()
             print(output)
-            time.sleep(5)
+            time.sleep(3)
         
         except KeyboardInterrupt:
             print('Program stopped by the user.')
