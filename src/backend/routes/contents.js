@@ -21,7 +21,6 @@ function contents (app,fs,path){
     if(!userID || userID !== users.userid){
         return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage))
     }else{
-      const wifispeed = req.query.wifispeed || null;
       res.render(path.join(__dirname, '../../view', 'contents.ejs'),{userID:userID});
       console.log('in contents')
     }

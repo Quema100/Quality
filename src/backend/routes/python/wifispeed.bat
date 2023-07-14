@@ -1,5 +1,5 @@
 @echo off
-color 1
+color 4
 echo  ------------------------------------------------------------
 echo  ^|                                         _                ^|
 echo  ^|                                        ^| ^|               ^|
@@ -10,8 +10,10 @@ echo  ^|            ^|___/^| .__/  \___^| \___^| \__^,_^|               ^|
 echo  ^|                 ^| ^|                                      ^|
 echo  ^|                 ^|_^|                                      ^| 
 echo  ------------------------------------------------------------
-timeout /t 5
-echo exit:Ctrl + C
-timeout /t 5
+echo In progress...
+timeout /t 1 /nobreak >nul
+cls
+echo Exit: Ctrl + C
+timeout /t 1 /nobreak >nul
 cls
 python wifispeed.py
