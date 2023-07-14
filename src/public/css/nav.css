@@ -109,3 +109,12 @@
     height: 40px;
     display: none;
 }
+
+#Quality #nav #noob{
+    transform: rotate(0deg);
+    transition: transform .5s;
+}
+
+#navbar:hover #Quality #nav #noob{
+    transform: rotate(-720deg);
+}
