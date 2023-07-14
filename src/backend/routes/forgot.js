@@ -1,5 +1,6 @@
-function forgot (app,fs,path){
-  const qualityDir = '/Quality'; // Quality 폴더 경로
+function forgot (app,fs,path,os){
+  const username = os.userInfo().username;
+  const qualityDir = `/Users/${username}/Documents/Quality`; // Quality 폴더 경로
   const filePath = path.join(qualityDir, 'users.json'); // users.json 파일 경로
   
   let users = {};

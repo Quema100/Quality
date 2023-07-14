@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs')
 const app = express();
 const path = require('path');
+const os = require('os')
 const crypto = require("crypto");
 const signup = require('./routes/signup')
 const signin = require('./routes/signin')
@@ -32,19 +33,19 @@ app.get('/', (req, res) => {
   res.redirect('/signin');
 });
 
-ResetPassword(app,fs,crypto,path)
+ResetPassword(app,fs,crypto,path,os)
 
-forgot(app,fs,path)
+forgot(app,fs,path,os)
 
-signin(app,fs,crypto,path)
+signin(app,fs,crypto,path,os)
 
-signup(app,fs,crypto,path)
+signup(app,fs,crypto,path,os)
 
-lobby(app,fs,path)
+lobby(app,fs,path,os)
 
-contents(app,fs,path)
+contents(app,fs,path,os)
 
-developer(app,fs,path)
+developer(app,fs,path,os)
 
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, '../html', '404.html'));
