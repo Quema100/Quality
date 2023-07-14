@@ -13,7 +13,7 @@ echo  ^|                 ^|_^|                                      ^|
 echo  ------------------------------------------------------------
 echo.
 echo In progress...
-timeout /t 1 /nobreak >nul
+timeout /t 2 /nobreak >nul
 cls
 echo Exit: Ctrl + C
 timeout /t 1 /nobreak >nul
