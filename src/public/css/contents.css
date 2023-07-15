@@ -27,4 +27,30 @@ body{
     background: #383838;
     border-radius: 30px;
 }
+#wifispeed{
+    width: 95%;
+    height: 43%;
+    background: #383838;
+    position: relative;
+    top: 1%;
+    left: 3%;
+    border-radius: 20px;
+}
 
+#wifispeed #wifispeedid{
+    float: left;
+    top: 5%;
+    position: relative;
+}
+
+#list #wifispeed #wifispeedid #wifispeedbutton{
+    position: relative;
+    background:transparent;
+    border: none;
+    top: 50%;
+    left: 2%;
+}
+
+#wifispeedcheck{
+    border-radius: 20px;
+}

@@ -4,6 +4,7 @@ const app = express();
 const path = require('path');
 const os = require('os')
 const crypto = require("crypto");
+const { spawn } = require('child_process');
 const signup = require('./routes/signup')
 const signin = require('./routes/signin')
 const forgot = require('./routes/forgot')
@@ -11,6 +12,7 @@ const home = require('./routes/home')
 const contents = require('./routes/contents')
 const developer = require('./routes/Developer')
 const ResetPassword = require('./routes/ResetPassword')
+const wifispeed = require('./routes/wifispeed')
 const port = 3000;
 
 app.set('view engine', 'ejs'); // EJS를 뷰 엔진으로 설정
@@ -44,6 +46,8 @@ signup(app,fs,crypto,path,os)
 home(app,fs,path,os)
 
 contents(app,fs,path,os)
+
+wifispeed(app,fs,path,os,spawn)
 
 developer(app,fs,path,os)
 
