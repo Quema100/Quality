@@ -7,7 +7,7 @@ const crypto = require("crypto");
 const signup = require('./routes/signup')
 const signin = require('./routes/signin')
 const forgot = require('./routes/forgot')
-const lobby = require('./routes/lobby')
+const home = require('./routes/home')
 const contents = require('./routes/contents')
 const developer = require('./routes/Developer')
 const ResetPassword = require('./routes/ResetPassword')
@@ -41,7 +41,7 @@ signin(app,fs,crypto,path,os)
 
 signup(app,fs,crypto,path,os)
 
-lobby(app,fs,path,os)
+home(app,fs,path,os)
 
 contents(app,fs,path,os)
 

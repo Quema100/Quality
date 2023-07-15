@@ -24,7 +24,7 @@ function signin(app,fs,crypto,path,os) {
     }
     const errorMessage = req.query.errorMessage || null;
     const successMessage = req.query.successMessage || null;
-    res.render(path.join(__dirname, '../../view', 'main.ejs'),{errorMessage:errorMessage,successMessage:successMessage});
+    res.render(path.join(__dirname, '../../view', 'signin.ejs'),{errorMessage:errorMessage,successMessage:successMessage});
   })
   .post((req, res) => {
     const userID = req.body.id;
@@ -48,7 +48,7 @@ function signin(app,fs,crypto,path,os) {
 
     if (users.userid === userID && encryptedPassword === users.password){
       console.log('User logged in successfully.');
-      return res.redirect('/signin/lobby?userID=' + encodeURIComponent(userID));
+      return res.redirect('/signin/home?userID=' + encodeURIComponent(userID));
     }
     
   });
