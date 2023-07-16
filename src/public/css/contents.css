@@ -7,7 +7,7 @@ body{
 
 #list{
     background: #444444;
-    height: 100vh;
+    height: 97vh;
     width: 95vw;
     margin-left: 5rem;
     overflow-y: scroll;
@@ -34,7 +34,7 @@ body{
     align-items: center; /* 수직 가운데 정렬 */
     height: 40%;
     background: #383838;
-    margin-top: 1%;
+    margin-top: 2%;
     margin-left: 3%;
     margin-right: 4%;
     border-radius: 20px;
@@ -76,6 +76,114 @@ body{
 }
 
 #wifispeed-text p:hover,#wifispeed-text h1:hover{
+    transition: .5s;
+    color: rgb(142, 142, 142);
+}
+
+#scrolling{
+    transition: .5s;
+    display: flex;
+    justify-content: space-evenly; 
+    align-items: center; /* 수직 가운데 정렬 */
+    height: 40%;
+    background: #383838;
+    margin-top: 2%;
+    margin-left: 3%;
+    margin-right: 4%;
+    border-radius: 20px;
+}
+
+#scrolling #scrollingid{
+    float: left;
+    display: flex;
+    justify-content: center; 
+    align-items: center; /* 수직 가운데 정렬 */
+    width: 55%;
+    height: 88%;
+}
+
+#list #scrolling #scrollingid #scrollingbutton{
+    display: flex;
+    justify-content: center; 
+    align-items: center; /* 수직 가운데 정렬 */
+    background:transparent;
+    border: none;
+}
+
+#scrollingcheck{
+    display: flex;
+    justify-content: left; 
+    align-items: center; /* 수직 가운데 정렬 */
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+#scrolling-text{
+    color: white;
+    text-align: center;
+    align-items: center; /* 수직 가운데 정렬 */
+}
+#scrolling-text p{
+    font-size: small;
+}
+
+#scrolling-text p:hover,#scrolling-text h1:hover{
+    transition: .5s;
+    color: rgb(142, 142, 142);
+}
+
+
+#IP-proxy{
+    margin-bottom: 2%;
+    transition: .5s;
+    display: flex;
+    justify-content: space-evenly; 
+    align-items: center; /* 수직 가운데 정렬 */
+    height: 40%;
+    background: #383838;
+    margin-top: 2%;
+    margin-left: 3%;
+    margin-right: 4%;
+    border-radius: 20px;
+}
+
+#IP-proxy #IP-proxyid{
+    float: left;
+    display: flex;
+    justify-content: center; 
+    align-items: center; /* 수직 가운데 정렬 */
+    width: 55%;
+    height: 88%;
+}
+
+#list #IP-proxy #IP-proxyid #IP-proxybutton{
+    display: flex;
+    justify-content: center; 
+    align-items: center; /* 수직 가운데 정렬 */
+    background:transparent;
+    border: none;
+}
+
+#IP-proxycheck{
+    display: flex;
+    justify-content: left; 
+    align-items: center; /* 수직 가운데 정렬 */
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+#IP-proxy-text{
+    color: white;
+    text-align: center;
+    align-items: center; /* 수직 가운데 정렬 */
+}
+#IP-proxy-text p{
+    font-size: small;
+}
+
+#IP-proxy-text p:hover,#IP-proxy-text h1:hover{
     transition: .5s;
     color: rgb(142, 142, 142);
 }
