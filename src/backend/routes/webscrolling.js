@@ -26,3 +26,5 @@ function webscrolling(app,fs,path,os,spawn){
 
     })
 }
+
+module.exports = webscrolling

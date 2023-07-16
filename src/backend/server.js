@@ -2,17 +2,18 @@ const express = require('express');
 const fs = require('fs')
 const app = express();
 const path = require('path');
-const os = require('os')
+const os = require('os');
 const crypto = require("crypto");
 const { spawn } = require('child_process');
-const signup = require('./routes/signup')
-const signin = require('./routes/signin')
-const forgot = require('./routes/forgot')
-const home = require('./routes/home')
-const contents = require('./routes/contents')
-const developer = require('./routes/Developer')
-const ResetPassword = require('./routes/ResetPassword')
-const wifispeed = require('./routes/wifispeed')
+const signup = require('./routes/signup');
+const signin = require('./routes/signin');
+const forgot = require('./routes/forgot');
+const home = require('./routes/home');
+const contents = require('./routes/contents');
+const developer = require('./routes/Developer');
+const ResetPassword = require('./routes/ResetPassword');
+const wifispeed = require('./routes/wifispeed');
+const webscrolling = require('./routes/webscrolling');
 const port = 3000;
 
 app.set('view engine', 'ejs'); // EJS를 뷰 엔진으로 설정
@@ -35,21 +36,23 @@ app.get('/', (req, res) => {
   res.redirect('/signin');
 });
 
-ResetPassword(app,fs,crypto,path,os)
+ResetPassword(app,fs,crypto,path,os);
 
-forgot(app,fs,path,os)
+forgot(app,fs,path,os);
 
-signin(app,fs,crypto,path,os)
+signin(app,fs,crypto,path,os);
 
-signup(app,fs,crypto,path,os)
+signup(app,fs,crypto,path,os);
 
-home(app,fs,path,os)
+home(app,fs,path,os);
 
-contents(app,fs,path,os)
+contents(app,fs,path,os);
 
-wifispeed(app,fs,path,os,spawn)
+wifispeed(app,fs,path,os,spawn);
 
-developer(app,fs,path,os)
+webscrolling(app,fs,path,os);
+
+developer(app,fs,path,os);
 
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, '../html', '404.html'));

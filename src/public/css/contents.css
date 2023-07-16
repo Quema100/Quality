@@ -102,7 +102,7 @@ body{
     height: 88%;
 }
 
-#list #scrolling #scrollingid #scrollingbutton{
+#list #scrolling #scrollingid #scrollinga{
     display: flex;
     justify-content: center; 
     align-items: center; /* 수직 가운데 정렬 */
