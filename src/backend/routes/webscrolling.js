@@ -20,10 +20,9 @@ function webscrolling(app,fs,path,os,spawn){
       if(!userID || userID !== users.userid){
           return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage))
       }else{
-        res.redirect('/signin/contents?userID=' + encodeURIComponent(userID));
       }
     })
     .post((req, res) => {
-        
+
     })
 }
