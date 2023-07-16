@@ -13,7 +13,7 @@ const contents = require('./routes/contents');
 const developer = require('./routes/Developer');
 const ResetPassword = require('./routes/ResetPassword');
 const wifispeed = require('./routes/wifispeed');
-const webscrolling = require('./routes/webscrolling');
+const webcrowling = require('./routes/webcrowling');
 const port = 3000;
 
 app.set('view engine', 'ejs'); // EJS를 뷰 엔진으로 설정
@@ -50,7 +50,7 @@ contents(app,fs,path,os);
 
 wifispeed(app,fs,path,os,spawn);
 
-webscrolling(app,fs,path,os);
+webcrowling(app,fs,path,os);
 
 developer(app,fs,path,os);
 
