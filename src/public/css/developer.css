@@ -6,7 +6,7 @@ body{
 }
 
 #devinfo{
-    margin-left: 4rem;
+    margin-left: 5rem;
     width: 95vw;
     overflow: hidden;
     height: 97vh;
@@ -32,26 +32,8 @@ body{
     transition: .3s;
 }
 
-#dev #margin #nooby{
-    color: white;
-    transition: .3s;
-}
-
 #dev #margin #Quema:hover{
     color: #444444;
-    animation: github .5s;
-}
-
-#dev #margin #nooby:hover{
-    color: #444444;
-}
-
-#dev #margin #Quema:hover:not(){
-    animation: github .5s;
-}
-
-#dev #margin #nooby:hover{
-    animation: github .5s;
 }
 
 #github{
