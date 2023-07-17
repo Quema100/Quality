@@ -4,3 +4,37 @@ body{
     background: #444444;
     overflow: hidden;
 }
+
+#home{
+    background: #444444;
+    height: 97vh;
+    width: 95vw;
+    margin-left: 5rem;
+    overflow: hidden;
+}
+
+#home #homename{
+    transition: .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    background: #383838;
+    margin-top: 3%;
+    margin-left: 4%;
+    margin-right: 5%;
+    border-radius: 20px;
+}
+
+#home #homemenu{
+    transition: .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    background: #383838;
+    margin-top: 3%;
+    margin-left: 4%;
+    margin-right: 5%;
+    border-radius: 20px;
+}
