@@ -20,7 +20,7 @@ function webcrowling(app,fs,path,os,spawn){
       if(!userID || userID !== users.userid){
           return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage))
       }else{
-        res.render(path.join(__dirname, '../../view', 'crowling.ejs'),{userID:userID});
+        res.render(path.join(__dirname, '../../view', 'webcrowling.ejs'),{userID:userID});
       }
     })
     .post((req, res) => {
