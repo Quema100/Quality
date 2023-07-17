@@ -4,6 +4,8 @@ const app = express();
 const path = require('path');
 const os = require('os');
 const crypto = require("crypto");
+const axios = require("axios");
+const cheerio = require("cheerio");
 const { spawn } = require('child_process');
 const signup = require('./routes/signup');
 const signin = require('./routes/signin');
@@ -50,7 +52,7 @@ contents(app,fs,path,os);
 
 wifispeed(app,fs,path,os,spawn);
 
-webcrowling(app,fs,path,os);
+webcrowling(app,fs,path,os,axios,cheerio);
 
 developer(app,fs,path,os);
 
