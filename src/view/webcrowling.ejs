@@ -23,7 +23,9 @@
                 <ul id="navbar-nav">
                   <li id="Quality">
                     <a id="nav">
-                      <img id="noob" src="/img/noobnuby.png" alt="noob-NaGa">
+                      <img id="bad" src="/img/badQuema.png" alt="badQuema">
+                      <img id="tinking" src="/img/thinking.png" alt="tinkingQuema">
+                      <img id="drug" src="/img/drug.png" alt="drugQuema">
                       <img id="img" src="/img/biggericon.png" alt="Quality">
                       <span id="nav-text">Quality</span>
                     </a>
@@ -65,6 +67,9 @@
             <input id="htmlCode" type="htmlCode" name="thirdhtmlCode" placeholder="thirdhtmlCode">
             <input id="submitButton" type="submit" value="Check" required>
           </form>
+          <% if (filepath){ %>
+            <p><%= filepath %></p>
+          <% } %>
         </div>
     </body>
 </html>
