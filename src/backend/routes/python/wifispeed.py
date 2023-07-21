@@ -22,7 +22,7 @@ def main():
         while not stop_event.is_set():
             time.sleep(1)
 
-        print('Press Ctrl+C to exit...')
+        print('please wait. It will be terminated shortly...')
 
     except KeyboardInterrupt:
         pass
