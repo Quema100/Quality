@@ -1,35 +1,31 @@
 import os
-import speedtest
 import time
-from measure_speed import measure_speed
+import threading
+import signal
+from my_thread import my_thread
 
 def main():
-    threads = []
+    stop_event = threading.Event()
+
+    # 스레드 생성과 실행
+    thread = threading.Thread(target=my_thread, args=(stop_event,))
+    thread.start()
+
+    # Ctrl+C 시그널 핸들러 등록
+    def signal_handler(sig, frame):
+        stop_event.set()  # Set the event to stop the thread
+
+    signal.signal(signal.SIGINT, signal_handler)
+
     try:
-        while True:
-            try:
-                output = measure_speed()
-                print(output)
-                time.sleep(3)
-            
-            except Exception as e:
-                print('error:', str(e))
-            
-            finally:
-                # 스레드 생성과 실행
-                for thread in threads:
-                    thread.start()
+        # 메인 스레드가 종료되지 않도록 무한 루프를 유지합니다.
+        while not stop_event.is_set():
+            time.sleep(1)
 
-                # 모든 스레드가 정상적으로 종료되도록 대기합니다.
-                for thread in threads:
-                    thread.join()
-
-                # 스레드 리스트를 비웁니다.
-                threads.clear()
+        print('Press Ctrl+C to exit...')
 
     except KeyboardInterrupt:
-        print('Program stopped by the user.')
-        return False
+        pass
 
 if __name__ == '__main__':
     main()
