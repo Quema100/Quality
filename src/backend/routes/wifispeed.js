@@ -25,8 +25,8 @@ function wifispeed(app,fs,path,os,spawn){
     })
     .post((req, res) => {
         const userID = req.query.userID;
-        const batchFilePath = path.join(__dirname,'.','python','wifispeed.bat')
-        spawn('powershell.exe', ['/c', 'start', batchFilePath], {cwd: path.join(__dirname, '.', 'python') });
+        const batchFilePath = path.join(__dirname,'.','python','wifi','wifispeed.bat')
+        spawn('powershell.exe', ['/c', 'start', batchFilePath], {cwd: path.join(__dirname, '.', 'python','wifi') });
         res.redirect('/signin/contents?userID=' + encodeURIComponent(userID));
     })
 }
