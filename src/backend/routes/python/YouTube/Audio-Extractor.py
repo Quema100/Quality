@@ -1,6 +1,3 @@
-import os
-import getpass
-from moviepy.editor import VideoFileClip , AudioFileClip
 from module.ONLY_Audio_Downloader import ONLY_Audio_Downloader
 from common.Youtube_URL import URL , is_valid_youtube_url
 
