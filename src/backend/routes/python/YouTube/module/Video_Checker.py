@@ -3,24 +3,24 @@ def Video_Checker(format_infos):
 
     for format_info in format_infos:
         format_id = format_info.get('format_id', 'Unknown ID')
-        format_ext = format_info.get('ext', 'Unknown Extension')
+        ext = format_info.get('ext', 'Unknown Extension')
         resolution = format_info.get('resolution', 'Unknown Resolution')
         fps = format_info.get('fps', 'Unknown FPS')
-        file_size = format_info.get('filesize', 'Unknown Filesize')
+        file_size = format_info.get('file_size', 'Unknown Filesize')
         vcodec = format_info.get('vcodec', 'Unknown Video Codec')
         vbr = format_info.get('vbr', 'Unknown Video Bitrate')
         acodec = format_info.get('acodec', 'Unknown Audio Codec')
         abr = format_info.get('abr', 'Unknown Audio Bitrate')
         audio_channels = format_info.get('audio_channels', 'Unknown Audio Channels')
         stretched_ratio = format_info.get('stretched_ratio', 'Unknown Stretched Ratio')
-        note = format_info.get('format_note', 'Unknown Format Note')
+        format_note = format_info.get('format_note', 'Unknown Format Note')
         F = format_info.get('format', 'Unknown Format')
         language = format_info.get('language', 'Unknown Language')
         protocol = format_info.get('protocol', 'Unknown Protocol')
         if "none" not in vcodec and "none" in acodec:
             info = {
-                'format_id': format_id,
-                'format_ext': format_ext,
+                'format_id': int(format_id),
+                'ext': ext,
                 'resolution': resolution,
                 'fps': fps,
                 'file_size': file_size,
@@ -30,7 +30,7 @@ def Video_Checker(format_infos):
                 'abr': abr,
                 'audio_channels': audio_channels,
                 'stretched_ratio': stretched_ratio,
-                'note': note,
+                'format_note': format_note,
                 'format': F,
                 'language': language,
                 'protocol': protocol

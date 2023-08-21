@@ -2,9 +2,14 @@ import os
 import yt_dlp
 import getpass
 from module.Encoding import Encoding
+from common.Height import height
 
-def AllDownload(Video,Audio):
-    print(Video ,"\n", Audio)
+def AllDownload(url,Video,Audio):
+    Video_height = height(Video)
+
+    Audio_height = height(Audio)
+
+    #print(Video ,"\n", Audio)
     #username = getpass.getuser()
     #path = os.path.join("C:\\Users", username, "Downloads")
     #try:
