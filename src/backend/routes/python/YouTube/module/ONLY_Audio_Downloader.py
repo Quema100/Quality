@@ -1,5 +1,6 @@
 import yt_dlp
 from common.Audio_Checker import Audio_Checker 
+from common.AllDownload import AllDownload
 
 def ONLY_Audio_Downloader(url):
     ydl_opts = {
@@ -47,6 +48,5 @@ def ONLY_Audio_Downloader(url):
         format_infos.append(format_info_dict)
     
     Audio = Audio_Checker(format_infos)
-    print(Audio)
-
-    print("fuck")
+    
+    download = AllDownload(url,None,Audio)
