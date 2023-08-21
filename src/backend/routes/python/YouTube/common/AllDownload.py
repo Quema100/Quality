@@ -26,7 +26,7 @@ def AllDownload(url,Video,Audio):
 
             ydl_opts = {
                 'format': f"{str(Audio_height['format_id'])},{Audio_height['ext']},{Audio_height['file_size']}",
-                'outtmpl': f'{path}\\%(title)s.%(ext)s',
+                'outtmpl': f'{path}\\%(title)s Audio.%(ext)s',
                 'quiet': True, 
             }
             

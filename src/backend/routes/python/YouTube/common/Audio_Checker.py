@@ -18,7 +18,7 @@ def Audio_Checker(format_infos):
         protocol = format_info.get('protocol', 'Unknown Protocol')
         if "audio only" in resolution:
             info = {
-                'format_id': int(format_id),
+                'format_id': format_id,
                 'ext': ext,
                 'resolution': resolution,
                 'fps': fps,

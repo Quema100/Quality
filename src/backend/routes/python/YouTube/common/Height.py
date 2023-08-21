@@ -14,7 +14,7 @@ def height(info):
             format_note = format_info.get('format_note', 'Unknown Format Note')
         #height ID
         if "none" not in vcodec and "none" in acodec:
-            max_id = max(info, key=lambda x: x["format_id"])
+            max_id = max(info, key=lambda x: x.get("file_size", 0) if isinstance(x.get("file_size"), int) else 0)
             return max_id
         elif "audio only" in resolution:
             max_file_size_entry = max(info, key=lambda x: x.get("file_size", 0) if isinstance(x.get("file_size"), int) else 0)
