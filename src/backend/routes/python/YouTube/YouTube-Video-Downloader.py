@@ -2,7 +2,7 @@ from module.Youtube_Downloader import youtube_info
 from common.Youtube_URL import URL , is_valid_youtube_url
 
 def main():
-    # Youtube URL
+    # fucking python
     try: 
         while True:
             youtube_url = URL()

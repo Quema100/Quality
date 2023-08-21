@@ -12,7 +12,6 @@ def Audio_Checker(format_infos):
         acodec = format_info.get('acodec', 'Unknown Audio Codec')
         abr = format_info.get('abr', 'Unknown Audio Bitrate')
         audio_channels = format_info.get('audio_channels', 'Unknown Audio Channels')
-        stretched_ratio = format_info.get('stretched_ratio', 'Unknown Stretched Ratio')
         format_note = format_info.get('format_note', 'Unknown Format Note')
         F = format_info.get('format', 'Unknown Format')
         language = format_info.get('language', 'Unknown Language')
@@ -29,7 +28,6 @@ def Audio_Checker(format_infos):
                 'acodec': acodec,
                 'abr': abr,
                 'audio_channels': audio_channels,
-                'stretched_ratio': stretched_ratio,
                 'format_note': format_note,
                 'format': F,
                 'language': language,
