@@ -11,7 +11,7 @@ def AllDownload(url,Video,Audio):
 
     print(Audio_height,Video_height)
 
-    if Video_height or Audio_height is not None:
+    if Video_height and Audio_height is not None:
         username = getpass.getuser()
         path = os.path.join("C:\\Users", username, "Downloads")
         try:
@@ -22,6 +22,7 @@ def AllDownload(url,Video,Audio):
             }
             
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                video_info = ydl.extract_info(url, download=False)
                 ydl.download(url)
 
             ydl_opts = {
@@ -31,7 +32,13 @@ def AllDownload(url,Video,Audio):
             }
             
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                video_info = ydl.extract_info(url, download=False)
                 ydl.download(url)
+            
+            title = video_info['title']
+            Audioext = Audio_height['ext']
+            Videoext = Video_height['ext']
+            Encoding(title,Audioext,Videoext)
 
         except Exception as e :
             print(e)
@@ -47,7 +54,11 @@ def AllDownload(url,Video,Audio):
             }
                 
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                video_info = ydl.extract_info(url, download=False)
                 ydl.download(url)
+                title = video_info['title']
+                Audioext = Audio_height['ext']
+                Encoding(title,Audioext,None)
         except Exception as e :
             print(e)
     else:
