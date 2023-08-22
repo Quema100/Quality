@@ -35,7 +35,7 @@ def Encoding(title,Audioext,Videoext):
             audio_load = os.path.join(path,fin_title)
             audioclip.write_audiofile(audio_load,nbytes=4,codec='pcm_s32le')
 
-            #os.remove(audio_path)
+            os.remove(audio_path)
 
             print(f"Downloaded to {audio_load}.")
             
