@@ -9,7 +9,7 @@ def Encoding(title,Audioext,Videoext):
 
     try:
         if Audioext and Videoext is not None:
-            fin_title = f"{title} fin.avi"
+            fin_title = f"{title} fin.mkv"
             video_title = f"{title}.{Videoext}"
             audio_title = f"{title} Audio.{Audioext}"
             video_path = os.path.join(path, video_title)
@@ -19,8 +19,8 @@ def Encoding(title,Audioext,Videoext):
             video = videoclip.set_audio(audioclip)
             video_load = os.path.join(path,fin_title)
             # If you're using .webm, the correct codec to use is 'libvpx'.
-            # If you're using .mp4, the correct codec to use is 'libx264'.
-            video.write_videofile(video_load,codec="rawvideo",bitrate="60000k", audio_codec="pcm_s32le",threads=8,fps=60,ffmpeg_params=['-vf','scale=3840x2160'])
+            # If you're using .mp4, the correct codec to use is 'libx264' or 'mpeg4'.
+            video.write_videofile(video_load,codec="mpeg4",bitrate="60000k", audio_codec="pcm_s32le",threads=8,fps=60,ffmpeg_params=['-vf','scale=3840x2160'])
 
 
             os.remove(video_path)
