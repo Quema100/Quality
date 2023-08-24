@@ -33,7 +33,7 @@ def Encoding(title,Audioext,Videoext):
             audio_path = os.path.join(path, audio_title)
             audioclip = AudioFileClip(audio_path)
             audio_load = os.path.join(path,fin_title)
-            audioclip.write_audiofile(audio_load,nbytes=4,bitrate='800k',codec='pcm_s32le')
+            audioclip.write_audiofile(audio_load, nbytes=4 , bitrate='320k', codec='pcm_s32le')
 
             os.remove(audio_path)
 
