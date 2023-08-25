@@ -1,6 +1,7 @@
 import os
 import getpass
 from moviepy.editor import VideoFileClip , AudioFileClip
+from module.Audio_Visualization import Audio_Visualization
 
 def Encoding(title,Audioext,Videoext):
     print("FUCKING PYTHON")
@@ -38,6 +39,8 @@ def Encoding(title,Audioext,Videoext):
             os.remove(audio_path)
 
             print(f"Downloaded to {audio_load}.")
+
+            Audio_Visualization(audio_load)
             
     except Exception as e:
         print(e)
