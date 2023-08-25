@@ -12,7 +12,7 @@ def Audio_Visualization(path):
 
     wav_file_path = path
 
-    slowdown_factor = 1
+    slowdown_factor = .95
     # read WAV file 
     audio_data, sample_rate = sf.read(wav_file_path)
 
@@ -71,7 +71,7 @@ def Audio_Visualization(path):
             plt.gca().set_facecolor('black')       
             plt.subplots_adjust(left=0, right=1, top=1, bottom=0)  
             plt.axis('off')  
-            plt.pause(.3)  
+            plt.pause(.33)  
             plt.draw()
         plt.close()
 
