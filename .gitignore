@@ -3,6 +3,7 @@
 /src/backend/routes/python/wifi/__pycache__
 /src/backend/routes/python/YouTube/common/__pycache__
 /src/backend/routes/python/YouTube/module/__pycache__
+/src/backend/routes/python/YouTube/Exit/__pycache__
 #-----------------------------------------#
 .DS_Store
 #package
