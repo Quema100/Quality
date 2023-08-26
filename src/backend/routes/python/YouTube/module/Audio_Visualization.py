@@ -76,7 +76,7 @@ def Audio_Visualization(path):
             plt.pause(.33)  
             plt.draw()
         plt.ioff()  
-        Tim.sleep(2)
+        Tim.sleep(5)
     plt.close()    
     print("Exit")
     sys.exit(0)
