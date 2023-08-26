@@ -1,6 +1,8 @@
 import os
+import sys
 import signal
 import getpass
+import time as Tim
 import numpy as np
 import soundfile as sf
 import sounddevice as sd
@@ -73,7 +75,8 @@ def Audio_Visualization(path):
             plt.axis('off')  
             plt.pause(.33)  
             plt.draw()
-        plt.close()
-
-    plt.ioff()  
-    print("Exiting...")
+        plt.ioff()  
+        Tim.sleep(2)
+    plt.close()    
+    print("Exit")
+    sys.exit(0)
