@@ -1,9 +1,12 @@
+import os
 import yt_dlp
 from common.Audio_Checker import Audio_Checker 
 from common.AllDownload import AllDownload
 from module.Video_Checker import Video_Checker
 
 def youtube_info(url):
+    os.system('cls' if os.name == 'nt' else 'clear')
+    
     ydl_opts = {
         'quiet': True, 
     }

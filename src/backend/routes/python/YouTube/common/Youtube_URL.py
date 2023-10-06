@@ -1,5 +1,5 @@
 def URL():
-    youtube_url = input("Input YouTube URL: ")
+    youtube_url = input('\033[32m'"Input YouTube URL: ")
     return youtube_url
 
 

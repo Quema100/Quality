@@ -1,5 +1,6 @@
 import os
 import getpass
+import time
 from moviepy.editor import VideoFileClip , AudioFileClip
 from module.Audio_Visualization import Audio_Visualization
 
@@ -20,13 +21,16 @@ def Encoding(title,Audioext,Videoext):
             video_load = os.path.join(path,fin_title)
             # If you're using .webm, the correct codec to use is 'libvpx'.
             # If you're using .mp4, the correct codec to use is 'libx264' or 'mpeg4'.
-            video.write_videofile(video_load,codec="libx264",bitrate="60000k", audio_codec="libmp3lame",threads=8,fps=60,ffmpeg_params=['-vf','scale=3840x2160'])
+            video.write_videofile(video_load,codec="libx264",bitrate="60000k", audio_codec="libmp3lame",threads=8,fps=60)
 
 
             os.remove(video_path)
             os.remove(audio_path)
 
             print(f"Downloaded to {video_load}.")
+            time.sleep(1)
+            os.system('cls' if os.name == 'nt' else 'clear')
+            
         elif Videoext is None and Audioext is not None:
             fin_title = f"{title}.wav"
             audio_title = f"{title}.{Audioext}"
