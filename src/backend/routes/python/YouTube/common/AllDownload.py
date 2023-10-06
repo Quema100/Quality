@@ -9,8 +9,6 @@ def AllDownload(url,Video,Audio):
 
     Audio_height = height(Audio)
 
-    print(Audio_height,Video_height)
-
     if Video_height and Audio_height is not None:
         username = getpass.getuser()
         path = os.path.join("C:\\Users", username, "Downloads")

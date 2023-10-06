@@ -4,7 +4,6 @@ from moviepy.editor import VideoFileClip , AudioFileClip
 from module.Audio_Visualization import Audio_Visualization
 
 def Encoding(title,Audioext,Videoext):
-    print("FUCKING PYTHON")
     username = getpass.getuser()
     path = os.path.join("C:\\Users", username, "Downloads")
 
