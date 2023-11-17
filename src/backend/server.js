@@ -14,7 +14,7 @@ const contents = require('./routes/contents');
 const developer = require('./routes/Developer');
 const ResetPassword = require('./routes/ResetPassword');
 const wifispeed = require('./routes/wifispeed');
-const webcrowling = require('./routes/webcrowling');
+const imgcrowling = require('./routes/imgcrowling');
 const YoutubeDownloader = require('./routes/YoutubeDownloader')
 const YoutubeChecker = require('./routes/YoutubeChecker')
 const AudioExtractor = require('./routes/AudioExtractor')
@@ -54,7 +54,7 @@ contents(app,fs,path,os);
 
 wifispeed(app,fs,path,os,spawn);
 
-webcrowling(app,fs,path,os,puppeteer);
+imgcrowling(app,fs,path,os,puppeteer);
 
 YoutubeDownloader(app,fs,path,os,spawn);
 
