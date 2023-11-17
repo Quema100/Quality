@@ -62,9 +62,6 @@
           <form method="post" action="/signin/contents/crowling" id="signup" >
             <input id="userID" type="text" name="userID" value="<%= userID %>">
             <input id="linkInput" type="url" name="link" placeholder="link" required oninvalid="this.setCustomValidity('Input URL')" oninput="this.setCustomValidity('')">
-            <input id="htmlCode" type="htmlCode" name="mainhtmlCode" placeholder="firsthtmlCode" required oninvalid="this.setCustomValidity('Input htmlCode')" oninput="this.setCustomValidity('')">
-            <input id="htmlCode" type="htmlCode" name="secondhtmlCode" placeholder="secondhtmlCode">
-            <input id="htmlCode" type="htmlCode" name="thirdhtmlCode" placeholder="thirdhtmlCode">
             <input id="submitButton" type="submit" value="Check" required>
           </form>
           <% if (filepath){ %>

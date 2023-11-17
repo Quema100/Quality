@@ -5,7 +5,6 @@ const path = require('path');
 const os = require('os');
 const crypto = require("crypto");
 const puppeteer = require("puppeteer");
-const cheerio = require("cheerio");
 const { spawn } = require('child_process');
 const signup = require('./routes/signup');
 const signin = require('./routes/signin');
@@ -55,7 +54,7 @@ contents(app,fs,path,os);
 
 wifispeed(app,fs,path,os,spawn);
 
-webcrowling(app,fs,path,os,puppeteer,cheerio);
+webcrowling(app,fs,path,os,puppeteer);
 
 YoutubeDownloader(app,fs,path,os,spawn);
 
