@@ -54,8 +54,6 @@ contents(app,fs,path,os);
 
 wifispeed(app,fs,path,os,spawn);
 
-imgcrowling(app,fs,path,os,puppeteer);
-
 YoutubeDownloader(app,fs,path,os,spawn);
 
 YoutubeChecker(app,fs,path,os,spawn);
