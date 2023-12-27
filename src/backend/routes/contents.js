@@ -23,7 +23,6 @@ function contents (app,fs,path,os){
         return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage))
     }else{
       res.render(path.join(__dirname, '../../view', 'contents.ejs'),{userID:userID});
-      console.log('in contents')
     }
   })
   .post((req, res)=>{

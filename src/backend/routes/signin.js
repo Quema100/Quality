@@ -31,24 +31,24 @@ function signin(app,fs,crypto,path,os) {
     const userPassword = req.body.userPassword;
     const encryptedPassword = hashPassword(userPassword);
 
-    if (users.userid !== userID && encryptedPassword === users.password) {
+    if (users.userid.toLowerCase() !== userID.toLowerCase() && encryptedPassword === users.password) {
       const errorMessage = 'Not Found ID'; // 오류 메시지 예시
       return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage)); // index.ejs 파일 렌더링    
     }
 
-    if (users.userid !== userID && encryptedPassword !== users.password) {
+    if (users.userid.toLowerCase() !== userID.toLowerCase() && encryptedPassword !== users.password) {
       const errorMessage = 'Not Found ID and Password'; // 오류 메시지 예시
       return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage)); // index.ejs 파일 렌더링 
     }
 
-    if (users.userid === userID && encryptedPassword !== users.password) {
+    if (users.userid.toLowerCase() === userID.toLowerCase() && encryptedPassword !== users.password) {
       const errorMessage = 'Not Found Password'; // 오류 메시지 예시
       return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage)); // index.ejs 파일 렌더링      
     }
 
-    if (users.userid === userID && encryptedPassword === users.password){
+    if (users.userid.toLowerCase() === userID.toLowerCase() && encryptedPassword === users.password){
       console.log('User logged in successfully.');
-      return res.redirect('/signin/home?userID=' + encodeURIComponent(userID));
+      return res.redirect('/signin/home?userID=' + encodeURIComponent(userID[0].toUpperCase()+userID.toLowerCase().replace("q","")));
     }
     
   });
