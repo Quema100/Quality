@@ -7,6 +7,7 @@ def is_valid_youtube_url(url):
     valid_prefixes = [
         "https://www.youtube.com/watch?v=",
         "https://youtu.be/",
+        "https://youtube.com/watch?v=",
         "https://youtube.com/shorts",
         "https://www.youtube.com/shorts"
     ]
