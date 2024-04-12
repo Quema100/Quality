@@ -15,14 +15,14 @@ function home (app,fs,path,os){
           users = JSON.parse(fileContent);
         }
       }
-      
+
       const userID = req.query.userID;      
       const errorMessage = 'You have accessed an invalid path.'
 
       if(!userID || userID !== users.userid){
           return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage))
       }else{
-        res.render(path.join(__dirname, '../../view', 'home.ejs'),{userID:userID});
+        res.render(path.join(__dirname, '../../view', 'home.ejs'),{username:userID,userID:userID});
       }
 
     })

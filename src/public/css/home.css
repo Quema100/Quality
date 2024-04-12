@@ -16,7 +16,7 @@ body{
 #home #homename{
     transition: .5s;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     height: 20%;
     background: #383838;
@@ -24,6 +24,28 @@ body{
     margin-left: 4%;
     margin-right: 6%;
     border-radius: 20px;
+}
+
+#home #homename #nickname{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#home #homename #nickname #username{
+    font-size: 50px;
+    text-align: center;
+    color: white;
+}
+
+#home #homename #PF{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #home #homemenu{
