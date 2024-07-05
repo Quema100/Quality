@@ -1,12 +1,11 @@
-const contents = (app,fs,path,os) => {
+const download = (app,fs,path,os) => {
   const username = os.userInfo().username;
   const qualityDir = `/Users/${username}/Documents/Qualityinfo`; // Quality 폴더 경로
   const filePath = path.join(qualityDir, 'users.json'); // users.json 파일 경로
-  
 
   let users = {};
 
-  app.route('/signin/contents')
+  app.route('/signin/contents/download')
   .get((req, res)=>{
     // users.json 파일이 존재하는 경우 이전 데이터를 읽어옴
     if (fs.existsSync(filePath)) {
@@ -15,21 +14,23 @@ const contents = (app,fs,path,os) => {
         users = JSON.parse(fileContent);
       }
     }
-    
-    const userID = req.query.userID;
+
+    console.log('in download')
+
+    const userID = req.query.userID;      
+    console.log(userID)
     const errorMessage = 'You have accessed an invalid path.'
 
     if(!userID || userID !== users.userid){
         return res.redirect('/signin?errorMessage=' + encodeURIComponent(errorMessage))
     }else{
-      res.render(path.join(__dirname, '../../view', 'contents.ejs'),{userID:userID});
+      res.render(path.join(__dirname, '../../view', 'download.ejs'),{userID:userID});
     }
+
   })
   .post((req, res)=>{
 
   })
-
-
 }
 
-module.exports = contents
+module.exports = download

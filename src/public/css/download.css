@@ -1,0 +1,14 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #444444;
+    overflow: hidden;
+}
+
+#main{
+    background: #444444;
+    height: 97vh;
+    width: 95vw;
+    margin-left: 5rem;
+    overflow-y: scroll;
+}

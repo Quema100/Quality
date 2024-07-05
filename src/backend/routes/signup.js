@@ -39,11 +39,11 @@ function signup(app,fs,crypto,path,os){
       const userPassword = hashPassword(hashedPassword);
   
       const newUser = {
-        userid: userID,
+        userid: userID[0].toUpperCase()+userID.toLowerCase().replace(userID[0],""),
         password: userPassword
       };
   
-      if (users.userid === userID) {
+      if (users.userid.toLowerCase() === userID.toLowerCase()) {
         console.log('User already exists. Cannot create a duplicate user.');
         const errorMessage = 'An account with the same ID already exists.';
         return res.redirect('/signup?errorMessage=' + encodeURIComponent(errorMessage));

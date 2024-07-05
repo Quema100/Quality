@@ -1,4 +1,4 @@
-function forgot (app,fs,path,os){
+const forgot = (app,fs,path,os) => {
   const username = os.userInfo().username;
   const qualityDir = `/Users/${username}/Documents/Qualityinfo`; // Quality 폴더 경로
   const filePath = path.join(qualityDir, 'users.json'); // users.json 파일 경로
@@ -19,16 +19,16 @@ function forgot (app,fs,path,os){
     res.render(path.join(__dirname, '../../view', 'forgot.ejs'), { errorMessage:errorMessage}); 
   })
   .post((req, res) => {
-    const userID = req.body.id;
+    const userID = req.body.id.toLowerCase();
 
-    if (users.userid !== userID) {
+    if (users.userid.toLowerCase() !== userID.toLowerCase() ) {
       const errorMessage = 'Not Found ID';
       res.redirect('/forgot?errorMessage=' + encodeURIComponent(errorMessage)); 
     }
 
-    if (users.userid === userID){
+    if (users.userid.toLowerCase() === userID.toLowerCase() ) {
       // 세션 대신 query string으로 userID 전달
-      return res.redirect('/forgot/resetpassword?userID=' + encodeURIComponent(userID));
+      return res.redirect('/forgot/resetpassword?userID=' + encodeURIComponent(userID[0].toUpperCase()+userID.toLowerCase().replace(userID[0],"")));
     }
   
   });

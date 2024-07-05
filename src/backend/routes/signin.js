@@ -27,7 +27,7 @@ function signin(app,fs,crypto,path,os) {
     res.render(path.join(__dirname, '../../view', 'signin.ejs'),{errorMessage:errorMessage,successMessage:successMessage});
   })
   .post((req, res) => {
-    const userID = req.body.id;
+    const userID = req.body.id.toLowerCase();
     const userPassword = req.body.userPassword;
     const encryptedPassword = hashPassword(userPassword);
 
@@ -48,7 +48,7 @@ function signin(app,fs,crypto,path,os) {
 
     if (users.userid.toLowerCase() === userID.toLowerCase() && encryptedPassword === users.password){
       console.log('User logged in successfully.');
-      return res.redirect('/signin/home?userID=' + encodeURIComponent(userID[0].toUpperCase()+userID.toLowerCase().replace("q","")));
+      return res.redirect('/signin/home?userID=' + encodeURIComponent(userID[0].toUpperCase()+userID.toLowerCase().replace(userID[0],"")));
     }
     
   });

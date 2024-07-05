@@ -11,6 +11,7 @@ const home = require('./routes/home');
 const contents = require('./routes/contents');
 const developer = require('./routes/Developer');
 const ResetPassword = require('./routes/ResetPassword');
+const download = require('./routes/download')
 const port = 3000;
 
 app.set('view engine', 'ejs'); // EJS를 뷰 엔진으로 설정
@@ -44,6 +45,8 @@ signup(app,fs,crypto,path,os);
 home(app,fs,path,os);
 
 contents(app,fs,path,os);
+
+download(app,fs,path,os)
 
 developer(app,fs,path,os);
 
